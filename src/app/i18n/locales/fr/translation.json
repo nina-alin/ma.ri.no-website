@@ -1,0 +1,34 @@
+{
+  "navbar": {
+    "links": {
+      "home": "home",
+      "about-me": "à propos de moi",
+      "my-story": "mon histoire",
+      "projects": "projets"
+    },
+    "buttons": {
+      "contact-me": "Me contacter"
+    },
+    "projects": {
+      "graphic-design": "Design Graphique",
+      "visual-communication": "Communication Visuelle",
+      "illustration": "Illustration",
+      "packaging": "Packaging",
+      "editorial": "Éditorial",
+      "display": "Display"
+    }
+  },
+  "home": {
+    "creative-director": "Directrice Artistique",
+    "graphic-designer": "Designer Graphique",
+    "graphic-design": "Design Graphique",
+    "illustration": "Illustration",
+    "packaging-branding": "Packaging & Branding",
+    "creative-concepts": "Concepts Créatifs",
+    "more": "PLUS",
+    "my-story": "Mon Histoire",
+    "discover-my-story": "DECOUVRIR MON HISTOIRE",
+    "projects-gallery": "Gallerie de Projets",
+    "all": "Tout"
+  }
+}

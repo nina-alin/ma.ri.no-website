@@ -1,0 +1,34 @@
+{
+  "navbar": {
+    "links": {
+      "home": "home",
+      "about-me": "about me",
+      "my-story": "my story",
+      "projects": "projects"
+    },
+    "buttons": {
+      "contact-me": "Contact me"
+    },
+    "projects": {
+      "graphic-design": "Graphic Design",
+      "visual-communication": "Visual Communication",
+      "illustration": "Illustration",
+      "packaging": "Packaging",
+      "editorial": "Editorial",
+      "display": "Display"
+    }
+  },
+  "home": {
+    "creative-director": "Creative Director",
+    "graphic-designer": "Graphic Designer",
+    "graphic-design": "Graphic Design",
+    "illustration": "Illustration",
+    "packaging-branding": "Packaging & Branding",
+    "creative-concepts": "Creative concept",
+    "more": "MORE",
+    "my-story": "My story",
+    "discover-my-story": "DISCOVER MY STORY",
+    "projects-gallery": "Projects Gallery",
+    "all": "All"
+  }
+}

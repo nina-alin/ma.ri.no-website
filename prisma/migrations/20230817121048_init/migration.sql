@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Types" ALTER COLUMN "nameEn" SET DEFAULT '',
+ALTER COLUMN "nameJp" SET DEFAULT '';

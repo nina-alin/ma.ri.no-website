@@ -1,0 +1,20 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+@media only screen and (max-device-width: 768px) {
+  .body {
+    padding: 2rem;
+  }
+}
+
+@media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+  .body {
+    padding: 3rem;
+  }
+}

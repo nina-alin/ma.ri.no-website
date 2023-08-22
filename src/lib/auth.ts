@@ -1,0 +1,50 @@
+// @ts-nocheck
+
+import { prisma } from "@/lib/prisma";
+import type { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { compare } from "bcryptjs";
+
+export const authOptions: NextAuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
+  providers: [
+    CredentialsProvider({
+      id: "credentials",
+      name: "credentials",
+      credentials: {
+        username: {
+          label: "Username",
+          type: "text",
+          placeholder: "jsmith",
+        },
+        password: { label: "Password", type: "password" },
+      },
+      authorize: async (credentials, req) => {
+        console.log("credentials", credentials);
+
+        const user = await prisma.admin
+          .findUnique({
+            where: { username: credentials.username },
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+        console.log(user);
+        const comparison = await compare(req.body.password, user.password);
+        console.log(comparison);
+
+        if (user) {
+          return {
+            name: user.username,
+            password: user.password,
+          };
+        } else {
+          return null;
+        }
+      },
+    }),
+  ],
+  secret: process.env.SECRET,
+};

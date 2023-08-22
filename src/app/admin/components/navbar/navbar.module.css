@@ -1,0 +1,26 @@
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+  padding: 1rem 3rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.addButtons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.add {
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  background: none;
+  border-radius: 16px;
+}
+
+.add:hover {
+  cursor: pointer;
+}

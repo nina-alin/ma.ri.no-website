@@ -1,0 +1,13 @@
+{
+  "navbar": {
+    "links": {
+      "home": "home",
+      "about-me": "about me",
+      "my-story": "my story",
+      "projects": "projects"
+    },
+    "buttons": {
+      "contact-me": "Contact me"
+    }
+  }
+}

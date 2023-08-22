@@ -1,0 +1,120 @@
+.main {
+  padding: 2rem;
+}
+
+.form {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit {
+  border: 1px solid black;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  background: none;
+  font-size: 1rem;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionInput {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label > label,
+.label > span {
+  font-size: 0.8rem;
+  color: #808080;
+  margin-left: 0.5vw;
+}
+
+.textfield {
+  width: 15vw;
+  border: 1px solid black;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+}
+
+.textarea {
+  resize: none;
+  border: 1px solid black;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+}
+
+.select {
+  height: 4vh;
+  width: 15vw;
+  border: 1px solid black;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+}
+
+.checkbox_container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox_container > label {
+  font-size: 1.3rem;
+}
+
+.imageContainer {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+.imagesUrl {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.imageSize {
+  width: 30vw;
+  height: auto;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(196, 12%, 82%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.addImageButton {
+  border: 1px solid black;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  background: none;
+  font-size: 1rem;
+}
