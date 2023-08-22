@@ -16,6 +16,7 @@ interface Home {
     lng: string;
   };
 }
+
 const Home = async ({ params: { lng } }: Home) => {
   const { t } = await translate(lng);
 
