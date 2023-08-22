@@ -1,10 +1,11 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
-import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import Link from "next/link";
-import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
+import { useContext, useEffect, useRef, useState } from "react";
+
 import MapProjects from "@/app/[lng]/components/layout/map-projects";
+import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
+import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 
 const NavbarProjects = ({
   projectTranslation,
@@ -12,7 +13,7 @@ const NavbarProjects = ({
   projectTranslation: string;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  let ref = useRef(null);
+  let reference = useRef(null);
   const lng = useContext(LngContext);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const NavbarProjects = ({
       </Link>
       {isOpen ? (
         <div
-          ref={ref}
+          ref={reference}
           className={styles.subprojects}
           onMouseEnter={() => setIsOpen(true)}
         >

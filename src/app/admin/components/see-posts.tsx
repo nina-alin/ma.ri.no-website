@@ -1,24 +1,26 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
-import styles from "./see-posts.module.css";
 import Image from "next/image";
-import PenIcon from "@/app/admin/components/svg/pen-icon";
-import DeleteIcon from "@/app/admin/components/svg/delete-icon";
-import { createPortal } from "react-dom";
-import Snackbar from "@/app/admin/components/snackbar/snackbar";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import ArrowUp from "@/app/admin/components/svg/arrow-up";
+import { useState } from "react";
+import { createPortal } from "react-dom";
+
+import Snackbar from "@/app/admin/components/snackbar/snackbar";
 import ArrowDown from "@/app/admin/components/svg/arrow-down";
+import ArrowUp from "@/app/admin/components/svg/arrow-up";
+import DeleteIcon from "@/app/admin/components/svg/delete-icon";
+import PenIcon from "@/app/admin/components/svg/pen-icon";
 import { PostWithType } from "@/types/posts";
+
+import styles from "./see-posts.module.css";
 
 type Language = "fr" | "en" | "ja";
 
-interface Props {
+interface SeePostsProperties {
   posts: PostWithType[];
 }
-const SeePosts = ({ posts }: Props) => {
+const SeePosts = ({ posts }: SeePostsProperties) => {
   const router = useRouter();
   const [langTitle, setLangTitle] = useState<Language>("fr");
   const [langContent, setLangContent] = useState<Language>("fr");
@@ -32,8 +34,8 @@ const SeePosts = ({ posts }: Props) => {
     fetch("/api/posts", {
       method: "DELETE",
       body: JSON.stringify({ id: postId }),
-    }).then((res) => {
-      if (res.status === 200) {
+    }).then((response) => {
+      if (response.status === 200) {
         router.refresh();
         setShowSnackbar({
           toggle: true,
@@ -59,8 +61,8 @@ const SeePosts = ({ posts }: Props) => {
         order: order,
         previousOrder: post.order,
       }),
-    }).then((res) => {
-      if (res.status === 200) {
+    }).then((response) => {
+      if (response.status === 200) {
         router.refresh();
         setShowSnackbar({
           toggle: true,
@@ -118,30 +120,30 @@ const SeePosts = ({ posts }: Props) => {
         {posts.map((post) => (
           <tr className={styles.tbody} key={post.id}>
             <td className={styles.order}>
-              {post.order !== posts.length - 1 ? (
+              {post.order === posts.length - 1 ? null : (
                 <button onClick={() => onChangeOrder(post.order + 1, post)}>
                   <ArrowUp />
                 </button>
-              ) : null}
-              {post.order !== 0 ? (
+              )}
+              {post.order === 0 ? null : (
                 <button onClick={() => onChangeOrder(post.order - 1, post)}>
                   <ArrowDown />
                 </button>
-              ) : null}
+              )}
             </td>
             <td>
               {langTitle === "fr"
                 ? post.titleFr
-                : langTitle === "en"
+                : (langTitle === "en"
                 ? post.titleEn
-                : post.titleJp}
+                : post.titleJp)}
             </td>
             <td>
               {langContent === "fr"
                 ? post.contentFr
-                : langContent === "en"
+                : (langContent === "en"
                 ? post.contentEn
-                : post.contentJp}
+                : post.contentJp)}
             </td>
             <td>
               <img

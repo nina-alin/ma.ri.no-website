@@ -1,16 +1,18 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import styles from "./change-language.module.css";
 
-interface ChangeLanguageProps {
+interface ChangeLanguageProperties {
   language: {
     display: string;
     redirect: string;
   };
 }
-const ChangeLanguage = ({ language }: ChangeLanguageProps) => {
+
+const ChangeLanguage = ({ language }: ChangeLanguageProperties) => {
   const pathname = usePathname();
 
   return (

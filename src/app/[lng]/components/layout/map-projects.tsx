@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { Types } from "@prisma/client";
-import { prisma } from "@/lib/prisma";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+
+import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
+import { prisma } from "@/lib/prisma";
 const MapProjects = ({ lng }: { lng: string }) => {
   const [projects, setProjects] = useState<Types[]>([]);
 
@@ -13,7 +14,7 @@ const MapProjects = ({ lng }: { lng: string }) => {
       setProjects(
         await fetch("/api/types", {
           method: "GET",
-        }).then((res) => res.json()),
+        }).then((response) => response.json()),
       );
     })();
   }, []);
@@ -28,9 +29,9 @@ const MapProjects = ({ lng }: { lng: string }) => {
         >
           {lng === "fr"
             ? project.nameFr
-            : lng === "en"
+            : (lng === "en"
             ? project.nameEn
-            : project.nameJp}
+            : project.nameJp)}
         </Link>
       ))}
     </>

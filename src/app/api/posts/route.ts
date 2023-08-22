@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
-import { Prisma } from ".prisma/client";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -10,7 +9,7 @@ export async function GET(request: Request) {
       type: true,
     },
     ...(url.searchParams.get("take") && {
-      take: parseInt(url.searchParams.get("take") as string),
+      take: Number.parseInt(url.searchParams.get("take") as string),
     }),
     orderBy: {
       order: "desc",

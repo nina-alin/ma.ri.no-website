@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useEffect } from "react";
+
 import styles from "./snackbar.module.css";
 
-interface Props {
+interface SnackBarProperties {
   message: string;
   dismiss: () => void;
   color: string;
 }
 
-const Snackbar = ({ message, dismiss, color }: Props) => {
+const Snackbar = ({ message, dismiss, color }: SnackBarProperties) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       dismiss();

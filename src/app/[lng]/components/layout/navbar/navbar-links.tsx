@@ -1,8 +1,9 @@
-import { translate } from "@/app/i18n";
-import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import Link from "next/link";
+
 import MapLinks from "@/app/[lng]/components/layout/map-links";
 import MapProjects from "@/app/[lng]/components/layout/map-projects";
+import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
+import { translate } from "@/app/i18n";
 const NavbarLinks = async ({ lng }: { lng: string }) => {
   const { t } = await translate(lng);
 

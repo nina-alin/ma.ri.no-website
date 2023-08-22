@@ -1,9 +1,11 @@
-import styles from "./footer.module.css";
-import Instagram from "@/app/components/svg/instagram";
-import Logo from "@/app/[lng]/components/svg/logo";
 import Link from "next/link";
+
 import MapLinks from "@/app/[lng]/components/layout/map-links";
 import MapProjects from "@/app/[lng]/components/layout/map-projects";
+import Logo from "@/app/[lng]/components/svg/logo";
+import Instagram from "@/app/components/svg/instagram";
+
+import styles from "./footer.module.css";
 
 const Footer = ({ lng }: { lng: string }) => {
   return (

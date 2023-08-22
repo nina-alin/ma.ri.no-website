@@ -1,30 +1,31 @@
-import styles from "@/app/admin/components/add-post/add-post-form.module.css";
+import { Types } from "@prisma/client";
+import { Dispatch, SetStateAction } from "react";
 // not typed so Typescript throws an error
 // TODO: add a d.ts file for this package
 // @ts-ignore
 import { SketchPicker } from "react-color";
-import { Dispatch, SetStateAction } from "react";
+
+import styles from "@/app/admin/components/add-post/add-post-form.module.css";
 import { PostWithoutOrderAndWithoutId } from "@/types/posts";
-import { Types } from "@prisma/client";
-interface Props {
+interface DisplayPostProperties {
   setForm: Dispatch<SetStateAction<PostWithoutOrderAndWithoutId>>;
   form: PostWithoutOrderAndWithoutId;
   updateForm: (event: any, key: string) => void;
   types: Types[];
 }
-const DisplayPost = ({ setForm, form, updateForm, types }: Props) => {
+const DisplayPost = ({ setForm, form, updateForm, types }: DisplayPostProperties) => {
   const handleTypeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     type: Types,
   ) => {
-    !form.type.map((t) => t.id).includes(type.id)
+    form.type.map((t) => t.id).includes(type.id)
       ? setForm({
           ...form,
-          type: [...form.type, JSON.parse(event.target.value)],
+          type: form.type.filter((t) => t.id !== type.id),
         })
       : setForm({
           ...form,
-          type: form.type.filter((t) => t.id !== type.id),
+          type: [...form.type, JSON.parse(event.target.value)],
         });
   };
 

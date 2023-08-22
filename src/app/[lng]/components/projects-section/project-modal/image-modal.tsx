@@ -1,16 +1,17 @@
 "use client";
 
+import { Types } from "@prisma/client";
+import gsap from "gsap";
 import { useContext, useEffect, useLayoutEffect, useRef } from "react";
-import pickColorBasedOnBackground from "@/utils/pick-color-based-on-background";
-import styles from "@/app/[lng]/components/projects-section/project-modal/imageFromGallery.module.css";
+
+import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import styles from "@/app/[lng]/components/projects-section/project-modal/image-from-gallery.module.css";
+import AnimatedButton from "@/app/components/gsap/animated-button";
 import ArrowLeft from "@/app/components/svg/arrow-left";
 import ArrowRight from "@/app/components/svg/arrow-right";
-import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
-import { Types } from "@prisma/client";
-import AnimatedButton from "@/app/components/gsap/animated-button";
-import gsap from "gsap";
 import { PostWithType } from "@/types/posts";
-interface ImageModalProps {
+import pickColorBasedOnBackground from "@/utils/pick-color-based-on-background";
+interface ImageModalProperties {
   onClose: () => void;
   posts: PostWithType[];
   goToPrevious: () => void;
@@ -23,9 +24,9 @@ const ImageModal = ({
   goToPrevious,
   goToNext,
   currentIndex,
-}: ImageModalProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
+}: ImageModalProperties) => {
+  const reference = useRef<HTMLDivElement>(null);
+  const modalReference = useRef<HTMLDivElement>(null);
   const lng = useContext(LngContext);
 
   const textColor = pickColorBasedOnBackground(
@@ -33,7 +34,7 @@ const ImageModal = ({
   );
 
   const onWheel = (event: UIEvent & { deltaY: number }) => {
-    const element = ref.current;
+    const element = reference.current;
     if (element) {
       if (event.deltaY == 0) return;
       element.scrollTo({
@@ -45,7 +46,7 @@ const ImageModal = ({
   const displayTags = (type: Types[]) => {
     return type
       ?.map((tag) =>
-        lng === "en" ? tag.nameEn : lng === "fr" ? tag.nameFr : tag.nameJp,
+        lng === "en" ? tag.nameEn : (lng === "fr" ? tag.nameFr : tag.nameJp),
       )
       .join(", ");
   };
@@ -72,10 +73,10 @@ const ImageModal = ({
         ease: "power2.out",
         stagger: 0.2,
       });
-    }, modalRef);
+    }, modalReference);
 
     return () => animation.revert();
-  }, [modalRef]);
+  }, [modalReference]);
   // TODO
   /*
   useLayoutEffect(() => {
@@ -164,7 +165,7 @@ const ImageModal = ({
       onClick={() => onClose()}
     >
       <div
-        ref={modalRef}
+        ref={modalReference}
         className={styles.modal}
         style={{ backgroundColor: posts[currentIndex].displayColor }}
         onClick={(event) => event.stopPropagation()}
@@ -178,9 +179,9 @@ const ImageModal = ({
             >
               {lng === "en"
                 ? posts[currentIndex].titleEn
-                : lng === "fr"
+                : (lng === "fr"
                 ? posts[currentIndex].titleFr
-                : posts[currentIndex].titleJp}
+                : posts[currentIndex].titleJp)}
             </h3>
             <p className={styles.subtitle} style={{ color: textColor }}>
               {posts[currentIndex].year} /{" "}
@@ -198,10 +199,17 @@ const ImageModal = ({
         <div
           id={"horizontalScroll"}
           className={styles.images}
-          ref={ref}
+          ref={reference}
           // @ts-ignore
           onWheel={onWheel}
         >
+          <img
+              key={currentIndex}
+              className={styles.imageModal}
+              src={posts[currentIndex].mainImageUrl}
+              alt={"main image from gallery"}
+              loading="lazy"
+          />
           {posts[currentIndex].imagesUrl.map((image: string) => (
             <img
               key={image}
@@ -215,12 +223,14 @@ const ImageModal = ({
         <div className={styles.description} style={{ color: textColor }}>
           {lng === "en"
             ? posts[currentIndex].contentEn
-            : lng === "fr"
+            : (lng === "fr"
             ? posts[currentIndex].contentFr
-            : posts[currentIndex].contentJp}
+            : posts[currentIndex].contentJp)}
         </div>
         <div className={styles.actions}>
-          {posts[currentIndex].order !== posts.length - 1 ? (
+          {posts[currentIndex].order === posts.length - 1 ? (
+            <div />
+          ) : (
             <AnimatedButton
               text={"Previous project"}
               id={"previous-project"}
@@ -230,8 +240,6 @@ const ImageModal = ({
               style={{ color: textColor, border: `2px solid ${textColor}` }}
               direction={"left"}
             />
-          ) : (
-            <div />
           )}
           {posts[currentIndex].order !== 0 && (
             <AnimatedButton

@@ -1,11 +1,11 @@
 import { LocomotiveScrollAppProvider } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
 
-interface Props {
+interface AboutMeProperties {
   params: {
     lng: string;
   };
 }
-const AboutMe = async ({ params: { lng } }: Props) => {
+const AboutMe = async ({ params: { lng } }: AboutMeProperties) => {
   return (
     <LocomotiveScrollAppProvider>
       <div data-scroll-section>

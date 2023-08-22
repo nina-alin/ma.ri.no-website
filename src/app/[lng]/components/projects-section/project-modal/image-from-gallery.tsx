@@ -1,26 +1,24 @@
 "use client";
 
-import styles from "./imageFromGallery.module.css";
-import Image from "next/image";
-import Modal from "@/app/components/modal/modal";
-import ImageModal from "@/app/[lng]/components/projects-section/project-modal/image-modal";
 import {
-  Dispatch,
-  forwardRef,
-  SetStateAction,
   useContext,
   useEffect,
   useState,
 } from "react";
+
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import ImageModal from "@/app/[lng]/components/projects-section/project-modal/image-modal";
+import Modal from "@/app/components/modal/modal";
 import { PostWithType } from "@/types/posts";
 
-interface Props {
+import styles from "./image-from-gallery.module.css";
+
+interface ImageFromGalleryProperties {
   post: PostWithType;
   posts: PostWithType[];
 }
 
-const ImageFromGallery = ({ post, posts }: Props) => {
+const ImageFromGallery = ({ post, posts }: ImageFromGalleryProperties) => {
   const lng = useContext(LngContext);
   const [open, setOpen] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -64,9 +62,9 @@ const ImageFromGallery = ({ post, posts }: Props) => {
       >
         {lng === "en"
           ? post.titleEn
-          : lng === "fr"
+          : (lng === "fr"
           ? post.titleFr
-          : post.titleJp}
+          : post.titleJp)}
       </h3>
       {open && (
         <Modal open={true}>

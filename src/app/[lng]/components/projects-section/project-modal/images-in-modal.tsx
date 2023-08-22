@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import styles from "@/app/[lng]/components/projects-section/project-modal/imageFromGallery.module.css";
+
+import styles from "@/app/[lng]/components/projects-section/project-modal/image-from-gallery.module.css";
 
 const ImagesInModal = ({ image }: { image: string }) => {
   return (

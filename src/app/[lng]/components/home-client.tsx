@@ -1,7 +1,8 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
 import ScrollTrigger, { gsap } from "gsap";
+import { useLayoutEffect, useRef } from "react";
+
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 
 const HomeClient = ({
@@ -11,7 +12,7 @@ const HomeClient = ({
   children: React.ReactNode;
   lng: string;
 }) => {
-  const homeRef = useRef(null);
+  const homeReference = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
 
   useLayoutEffect(() => {
@@ -30,14 +31,13 @@ const HomeClient = ({
         ease: "power2.out",
         stagger: 0.2,
       });
-    }, homeRef);
+    }, homeReference);
 
     return () => animation.revert();
   }, []);
 
   return (
-    <div ref={homeRef}>
-      {" "}
+    <div ref={homeReference}>
       <LngContext.Provider value={lng}>{children}</LngContext.Provider>
     </div>
   );

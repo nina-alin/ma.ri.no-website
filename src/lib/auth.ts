@@ -3,7 +3,6 @@
 import { prisma } from "@/lib/prisma";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -21,28 +20,18 @@ export const authOptions: NextAuthOptions = {
         },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials, req) => {
+      authorize: async (credentials) => {
         console.log("credentials", credentials);
 
         const user = await prisma.admin
           .findUnique({
             where: { username: credentials.username },
           })
-          .catch((e) => {
-            console.log(e);
-          });
-        console.log(user);
-        const comparison = await compare(req.body.password, user.password);
-        console.log(comparison);
 
-        if (user) {
-          return {
+        return user ? {
             name: user.username,
             password: user.password,
-          };
-        } else {
-          return null;
-        }
+          } : undefined;
       },
     }),
   ],

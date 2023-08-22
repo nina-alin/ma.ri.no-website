@@ -1,8 +1,9 @@
 "use client";
 
-import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
-import ChangeLanguage from "@/app/[lng]/components/layout/navbar/change-language";
 import { useContext, useEffect, useRef, useState } from "react";
+
+import ChangeLanguage from "@/app/[lng]/components/layout/navbar/change-language";
+import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 
 const languages = [
@@ -21,13 +22,13 @@ const languages = [
 ];
 const LangageDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  let ref = useRef(null);
+  let reference = useRef(null);
   const lng = useContext(LngContext);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       // @ts-ignore
-      if (ref.current && !ref.current.contains(event.target)) {
+      if (reference.current && !reference.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
@@ -49,14 +50,14 @@ const LangageDropdown = () => {
       {isOpen ? (
         <div
           className={styles.languages}
-          ref={ref}
+          ref={reference}
           onMouseEnter={() => setIsOpen(true)}
           id={"languages"}
         >
           {languages.map((language) =>
-            language.redirect !== lng ? (
+            language.redirect === lng ? null : (
               <ChangeLanguage key={language.redirect} language={language} />
-            ) : null,
+            ),
           )}
         </div>
       ) : null}

@@ -1,5 +1,6 @@
-import styles from "../../page.module.css";
 import { SVGProps } from "react";
+
+import styles from "../../page.module.css";
 const Logo = ({ properties }: { properties?: SVGProps<SVGSVGElement> }) => {
   return (
     <svg

@@ -1,12 +1,12 @@
 const pickColorBasedOnBackground = (bgColor: string) => {
-  const color = bgColor.charAt(0) === "#" ? bgColor.substring(1, 7) : bgColor;
+  const color = bgColor.charAt(0) === "#" ? bgColor.slice(1, 7) : bgColor;
   const rgb = [
-    parseInt(color.substring(0, 2), 16) / 255,
-    parseInt(color.substring(2, 4), 16) / 255,
-    parseInt(color.substring(4, 6), 16) / 255,
+    Number.parseInt(color.slice(0, 2), 16) / 255,
+    Number.parseInt(color.slice(2, 4), 16) / 255,
+    Number.parseInt(color.slice(4, 6), 16) / 255,
   ];
   const colorTab = rgb.map((col) => {
-    if (col <= 0.03928) {
+    if (col <= 0.039_28) {
       return col / 12.92;
     }
     return Math.pow((col + 0.055) / 1.055, 2.4);

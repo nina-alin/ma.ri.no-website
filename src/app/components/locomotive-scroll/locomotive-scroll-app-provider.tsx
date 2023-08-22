@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, createContext, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 export const SmoothScrollContext = createContext({
   scroll: null,
@@ -13,11 +13,21 @@ export const LocomotiveScrollAppProvider = ({
   const [scroll, setScroll] = useState(null);
 
   useEffect(() => {
-    if (!scroll) {
+    if (scroll) {
+      // prevent resize issues
+      // @ts-ignore
+      new ResizeObserver(() => scroll.update()).observe(
+        // @ts-ignore
+        document.querySelector("[data-scroll-container]"),
+      );
+    } else {
       (async () => {
         try {
-          // @ts-ignore
-          const LocomotiveScroll = (await import("locomotive-scroll")).default;
+          const loadedLocomotiveScroll = (await import(
+              // @ts-ignore
+              "locomotive-scroll"
+            ));
+          const LocomotiveScroll = loadedLocomotiveScroll.default;
 
           setScroll(
             new LocomotiveScroll({
@@ -30,16 +40,9 @@ export const LocomotiveScrollAppProvider = ({
             }),
           );
         } catch (error) {
-          throw Error(`[SmoothScrollProvider]: ${error}`);
+          throw new Error(`[SmoothScrollProvider]: ${error}`);
         }
       })();
-    } else {
-      // prevent resize issues
-      // @ts-ignore
-      new ResizeObserver(() => scroll.update()).observe(
-        // @ts-ignore
-        document.querySelector("[data-scroll-container]"),
-      );
     }
 
     return () => {

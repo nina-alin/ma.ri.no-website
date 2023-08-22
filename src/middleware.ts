@@ -10,31 +10,31 @@ export const config = {
 
 const cookieName = "i18next";
 
-export function middleware(req: NextRequest) {
+export function middleware(request: NextRequest) {
   let language;
-  if (req.cookies.has(cookieName)) {
+  if (request.cookies.has(cookieName)) {
     // @ts-ignore
-    language = acceptLanguage.get(req.cookies.get(cookieName).value);
+    language = acceptLanguage.get(request.cookies.get(cookieName).value);
   }
   if (!language)
-    language = acceptLanguage.get(req.headers.get("Accept-Language"));
+    language = acceptLanguage.get(request.headers.get("Accept-Language"));
   if (!language) language = fallbackLng;
 
   if (
     !languages.some((language) =>
-      req.nextUrl.pathname.startsWith(`/${language}`),
+        request.nextUrl.pathname.startsWith(`/${language}`),
     ) &&
-    !req.nextUrl.pathname.startsWith("/_next") &&
-    !req.nextUrl.pathname.startsWith("/admin")
+    !request.nextUrl.pathname.startsWith("/_next") &&
+    !request.nextUrl.pathname.startsWith("/admin")
   ) {
     return NextResponse.redirect(
-      new URL(`/${language}${req.nextUrl.pathname}`, req.url),
+      new URL(`/${language}${request.nextUrl.pathname}`, request.url),
     );
   }
 
-  if (req.headers.has("referer")) {
+  if (request.headers.has("referer")) {
     // @ts-ignore
-    const refererUrl = new URL(req.headers.get("referer"));
+    const refererUrl = new URL(request.headers.get("referer"));
     const lngInReferer = languages.find((local) =>
       refererUrl.pathname.startsWith(`/${local}`),
     );

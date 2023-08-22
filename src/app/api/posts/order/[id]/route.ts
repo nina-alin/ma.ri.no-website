@@ -49,7 +49,7 @@ export async function PUT(
     });
 
     return NextResponse.json(post);
-  } catch (e) {
+  } catch {
     return NextResponse.error();
   }
 }

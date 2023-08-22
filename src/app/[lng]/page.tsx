@@ -1,13 +1,15 @@
-import styles from "./page.module.css";
 import Image from "next/image";
+
+import HomeClient from "@/app/[lng]/components/home-client";
+import TypesClient from "@/app/[lng]/components/projects-section/types/types-client";
 import Logo from "@/app/[lng]/components/svg/logo";
-import ArrowRight from "@/app/components/svg/arrow-right";
-import { translate } from "@/app/i18n";
 import AnimatedButton from "@/app/components/gsap/animated-button";
 import { LocomotiveScrollAppProvider } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
+import ArrowRight from "@/app/components/svg/arrow-right";
+import { translate } from "@/app/i18n";
 import { prisma } from "@/lib/prisma";
-import TypesClient from "@/app/[lng]/components/projects-section/types/types-client";
-import HomeClient from "@/app/[lng]/components/home-client";
+
+import styles from "./page.module.css";
 
 interface Home {
   params: {

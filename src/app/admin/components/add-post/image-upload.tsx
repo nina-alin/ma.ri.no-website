@@ -1,21 +1,25 @@
 "use client";
 
-import styles from "./add-post-form.module.css";
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+
 import { PostWithoutOrderAndWithoutId } from "@/types/posts";
 
-interface Props {
+import styles from "./add-post-form.module.css";
+
+const parseImageUrl = (url: string) => {
+  const urlSplit = url.split("/");
+  const id = urlSplit[5].split("?")[0];
+  return `https://drive.google.com/uc?id=${id}`;
+};
+
+
+interface Properties {
   form: PostWithoutOrderAndWithoutId;
   setForm: Dispatch<SetStateAction<PostWithoutOrderAndWithoutId>>;
 }
-const ImageUpload = ({ setForm, form }: Props) => {
+const ImageUpload = ({ setForm, form }: Properties) => {
   const [fileNumber, setFileNumber] = useState(form.imagesUrl.length ?? 0);
 
-  const parseImageUrl = (url: string) => {
-    const urlSplit = url.split("/");
-    const id = urlSplit[5].split("?")[0];
-    return `https://drive.google.com/uc?id=${id}`;
-  };
 
   const updateStateAtIndex = (
     event: ChangeEvent<HTMLInputElement>,
@@ -36,6 +40,7 @@ const ImageUpload = ({ setForm, form }: Props) => {
     }
   };
 
+  // @ts-ignore
   return (
     <>
       <div className={styles.section}>
@@ -62,7 +67,8 @@ const ImageUpload = ({ setForm, form }: Props) => {
           />
         </div>
         <div className={styles.imagesUrl}>
-          {Array.from(Array(fileNumber).keys()).map((index) => (
+          { /* @ts-ignore */}
+          {[...Array.from({length: fileNumber}).keys()].map((index) => (
             <div key={index} className={styles.imageContainer}>
               {form.imagesUrl[index] && (
                 <img

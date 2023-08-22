@@ -1,13 +1,14 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
-import styles from "@/app/[lng]/page.module.css";
-import ImageFromGallery from "@/app/[lng]/components/projects-section/project-modal/imageFromGallery";
 import { Types } from "@prisma/client";
+import { useContext, useEffect, useState } from "react";
+
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import ImageFromGallery from "@/app/[lng]/components/projects-section/project-modal/image-from-gallery";
+import styles from "@/app/[lng]/page.module.css";
 import { PostWithType } from "@/types/posts";
 
-interface TypesClientProps {
+interface TypesClientProperties {
   types: Types[];
   translations: {
     all: string;
@@ -15,16 +16,16 @@ interface TypesClientProps {
   };
 }
 
-const TypesClient = ({ types, translations }: TypesClientProps) => {
+const TypesClient = ({ types, translations }: TypesClientProperties) => {
   const [chosenType, setChosenType] = useState<string | null>(null);
   const [posts, setPosts] = useState<PostWithType[]>([]);
   const lng = useContext(LngContext);
   const typeLang = (type: Types) =>
-    lng === "en" ? type.nameEn : lng === "fr" ? type.nameFr : type.nameJp;
+    lng === "en" ? type.nameEn : (lng === "fr" ? type.nameFr : type.nameJp);
 
   useEffect(() => {
     (async () => {
-      setPosts(await fetch(`/api/posts`).then((res) => res.json()));
+      setPosts(await fetch(`/api/posts`).then((response) => response.json()));
     })();
   }, []);
 
@@ -32,8 +33,8 @@ const TypesClient = ({ types, translations }: TypesClientProps) => {
     if (chosenType) {
       (async () => {
         setPosts(
-          await fetch(`/api/types/${chosenType}/posts`).then((res) =>
-            res.json(),
+          await fetch(`/api/types/${chosenType}/posts`).then((response) =>
+              response.json(),
           ),
         );
       })();
@@ -59,7 +60,7 @@ const TypesClient = ({ types, translations }: TypesClientProps) => {
             }}
             onClick={async () => {
               setChosenType(null);
-              setPosts(await fetch(`/api/posts`).then((res) => res.json()));
+              setPosts(await fetch(`/api/posts`).then((response) => response.json()));
             }}
           >
             {translations.all.toLowerCase()}

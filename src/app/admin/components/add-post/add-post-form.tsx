@@ -1,23 +1,25 @@
 "use client";
 
-import { ChangeEvent, MouseEventHandler, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import styles from "./add-post-form.module.css";
-import { createPortal } from "react-dom";
-import Snackbar from "@/app/admin/components/snackbar/snackbar";
 import { Types } from "@prisma/client";
-import ImageUpload from "@/app/admin/components/add-post/image-upload";
-import { PostWithoutOrderAndWithoutId, PostWithType } from "@/types/posts";
-import TitlesPost from "@/app/admin/components/add-post/titles-post";
+import { usePathname, useRouter } from "next/navigation";
+import { ChangeEvent, MouseEventHandler, useState } from "react";
+import { createPortal } from "react-dom";
+
 import DescriptionsPost from "@/app/admin/components/add-post/descriptions-post";
 import DisplayPost from "@/app/admin/components/add-post/display-post";
+import ImageUpload from "@/app/admin/components/add-post/image-upload";
+import TitlesPost from "@/app/admin/components/add-post/titles-post";
+import Snackbar from "@/app/admin/components/snackbar/snackbar";
+import { PostWithoutOrderAndWithoutId, PostWithType } from "@/types/posts";
 
-interface Props {
+import styles from "./add-post-form.module.css";
+
+interface AddPostFormProperties {
   post?: PostWithType;
   types: Types[];
 }
 
-const AddPostForm = ({ post, types }: Props) => {
+const AddPostForm = ({ post, types }: AddPostFormProperties) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -55,12 +57,12 @@ const AddPostForm = ({ post, types }: Props) => {
     event.preventDefault();
 
     if (isAddPage) {
-      const res = await fetch("/api/posts", {
+      const response = await fetch("/api/posts", {
         method: "POST",
         body: JSON.stringify(form),
       });
 
-      if (res.status === 200) {
+      if (response.status === 200) {
         router.push("/admin");
         setShowSnackbar({
           toggle: true,
@@ -75,12 +77,12 @@ const AddPostForm = ({ post, types }: Props) => {
         });
       }
     } else {
-      const res = await fetch(`/api/posts`, {
+      const response = await fetch(`/api/posts`, {
         method: "PUT",
         body: JSON.stringify({ id: post?.id, ...form }),
       });
 
-      if (res.status === 200) {
+      if (response.status === 200) {
         router.push("/admin");
         setShowSnackbar({
           toggle: true,

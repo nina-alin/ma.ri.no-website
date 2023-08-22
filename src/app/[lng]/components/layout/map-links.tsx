@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { translate } from "@/app/i18n";
 

@@ -1,15 +1,14 @@
 "use client";
 
+import gsap from "gsap";
 import {
-  useEffect,
-  useState,
   HTMLAttributes,
   ReactNode,
-  CSSProperties,
+  useEffect,
+  useState,
 } from "react";
-import gsap from "gsap";
 
-type Props = {
+type AnimatedButtonProperties = {
   text: string;
   id: string;
   icon?: ReactNode;
@@ -26,7 +25,7 @@ const AnimatedButton = ({
   onClick,
   style,
   direction,
-}: Props) => {
+}: AnimatedButtonProperties) => {
   const [isHover, setIsHover] = useState<boolean>(false);
 
   useEffect(() => {

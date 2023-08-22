@@ -1,9 +1,11 @@
+import Link from "next/link";
+import { signOut } from "next-auth/react";
+
 import AddPostForm from "@/app/admin/components/add-post/add-post-form";
 import SeePosts from "@/app/admin/components/see-posts";
-import Link from "next/link";
-import styles from "./page.module.css";
 import { prisma } from "@/lib/prisma";
-import { signOut } from "next-auth/react";
+
+import styles from "./page.module.css";
 export default async function AdminPage() {
   const posts = await prisma.posts.findMany({
     include: { type: true },

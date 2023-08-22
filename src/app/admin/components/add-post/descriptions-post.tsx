@@ -2,7 +2,7 @@
 
 import styles from "@/app/admin/components/add-post/add-post-form.module.css";
 
-interface Props {
+interface DescriptionsPostProperties {
   form: {
     contentEn: string;
     contentFr: string;
@@ -11,7 +11,7 @@ interface Props {
   updateForm: (event: any, key: string) => void;
 }
 
-const DescriptionsPost = ({ updateForm, form }: Props) => {
+const DescriptionsPost = ({ updateForm, form }: DescriptionsPostProperties) => {
   return (
     <div className={styles.section}>
       <h2>Contenu</h2>
