@@ -5,13 +5,14 @@ import { PostWithType } from "@/types/posts";
 import styles from "./page.module.css";
 
 const getPosts = async (): Promise<PostWithType[]> => {
-  const data = await fetch(`${process.env.NEXTAUTH_URL}/api/posts`, {
-    method: "GET",
-    cache: "no-cache",
+  return prisma.posts.findMany({
+    include: {
+      type: true,
+    },
+    orderBy: {
+      order: "desc",
+    },
   });
-  const posts = await data.json();
-
-  return posts;
 };
 
 export default async function AdminPage() {

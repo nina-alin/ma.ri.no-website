@@ -21,25 +21,18 @@ interface Home {
 }
 
 const getAlert = async () => {
-  return fetch(`${process.env.NEXTAUTH_URL}/api/alerts`, {
-    method: "GET",
-  });
+  return prisma.alert.findFirst();
 };
 
 const getTypes = async () => {
-  return fetch(`${process.env.NEXTAUTH_URL}/api/types`, {
-    method: "GET",
-    cache: "no-cache",
-  });
+  return prisma.types.findMany();
 };
 
 const Home = async ({ params: { lng } }: Home) => {
   const { t } = await translate(lng);
 
-  const types = await getTypes().then((response) => response.json());
-  const alert = await getAlert().then((response) => response.json());
-
-  console.log(alert);
+  const types = await getTypes();
+  const alert = (await getAlert()) as Alert;
 
   return (
     <LocomotiveScrollAppProvider>
