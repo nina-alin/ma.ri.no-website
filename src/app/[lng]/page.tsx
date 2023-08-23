@@ -9,6 +9,8 @@ import ArrowRight from "@/app/components/svg/arrow-right";
 import { translate } from "@/app/i18n";
 import { prisma } from "@/lib/prisma";
 
+import logoBackground from "../../../public/logoBackground.jpg";
+import placeholder from "../../../public/placeholder.png";
 import styles from "./page.module.css";
 
 interface Home {
@@ -29,10 +31,10 @@ const Home = async ({ params: { lng } }: Home) => {
           <div className={styles.hero}>
             <div className={styles.backgroundLogo} id={"background-logo"}>
               <Image
-                src={"/logo-background.jpg"}
+                src={logoBackground}
                 alt={"logo background"}
-                width={"500"}
-                height={"800"}
+                width={"1000"}
+                height={"500"}
               />
               <h1
                 id={"name"}
@@ -74,7 +76,7 @@ const Home = async ({ params: { lng } }: Home) => {
               </h2>
               <Image
                 className={styles.aboutMeImage}
-                src={"/placeholder.png"}
+                src={placeholder}
                 alt={"placeholder"}
                 width={"1000"}
                 height={"500"}
@@ -102,7 +104,7 @@ const Home = async ({ params: { lng } }: Home) => {
           </div>
           <div className={styles.myStory}>
             <Image
-              src={"/placeholder.png"}
+              src={placeholder}
               alt={"placeholder"}
               width={"700"}
               height={"600"}

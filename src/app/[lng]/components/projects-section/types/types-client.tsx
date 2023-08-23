@@ -19,27 +19,50 @@ interface TypesClientProperties {
 const TypesClient = ({ types, translations }: TypesClientProperties) => {
   const [chosenType, setChosenType] = useState<string | null>(null);
   const [posts, setPosts] = useState<PostWithType[]>([]);
+  const [numberOfPosts, setNumberOfPosts] = useState<number>(6);
+  const [maxNumberOfPosts, setMaxNumberOfPosts] = useState<number>(0);
   const lng = useContext(LngContext);
   const typeLang = (type: Types) =>
     lng === "en" ? type.nameEn : (lng === "fr" ? type.nameFr : type.nameJp);
 
   useEffect(() => {
     (async () => {
-      setPosts(await fetch(`/api/posts`).then((response) => response.json()));
+      setMaxNumberOfPosts(
+        await fetch(`/api/posts/count`).then((response) => response.json()),
+      );
     })();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      setPosts(
+        await fetch(`/api/posts?take=${numberOfPosts}`).then((response) =>
+          response.json(),
+        ),
+      );
+    })();
+  }, [numberOfPosts]);
 
   useEffect(() => {
     if (chosenType) {
       (async () => {
         setPosts(
-          await fetch(`/api/types/${chosenType}/posts`).then((response) =>
-              response.json(),
-          ),
+          await fetch(
+            `/api/types/${chosenType}/posts?take=${numberOfPosts}`,
+          ).then((response) => response.json()),
         );
+        const maxPosts = await fetch(
+          `/api/types/${chosenType}/posts/count`,
+        ).then((response) => response.json());
+        // numberOfPosts could be greater than maxPosts
+        // because it is set to 6 when a type is chosen
+        if (numberOfPosts > maxPosts) {
+          setNumberOfPosts(maxPosts);
+        }
+        setMaxNumberOfPosts(maxPosts);
       })();
     }
-  }, [chosenType]);
+  }, [chosenType, numberOfPosts]);
 
   return (
     <div className={styles.projects} id={"projects"}>
@@ -60,14 +83,20 @@ const TypesClient = ({ types, translations }: TypesClientProperties) => {
             }}
             onClick={async () => {
               setChosenType(null);
-              setPosts(await fetch(`/api/posts`).then((response) => response.json()));
+              setNumberOfPosts(6);
+              setPosts(
+                await fetch(`/api/posts`).then((response) => response.json()),
+              );
             }}
           >
             {translations.all.toLowerCase()}
           </span>
           {types.map((type) => (
             <span
-              onClick={() => setChosenType(type.id)}
+              onClick={() => {
+                setNumberOfPosts(6);
+                setChosenType(type.id);
+              }}
               key={type.id}
               className={styles.underlineAnimation}
               style={{
@@ -81,9 +110,23 @@ const TypesClient = ({ types, translations }: TypesClientProperties) => {
       </div>
       <div className={styles.projectsGallery}>
         {posts?.map((post) => (
-          <ImageFromGallery key={post.id} post={post} posts={posts} />
+          <ImageFromGallery
+            key={post.id}
+            post={post}
+            posts={posts}
+            numberOfPosts={numberOfPosts}
+          />
         ))}
       </div>
+      {maxNumberOfPosts > numberOfPosts ? (
+        <button
+          style={{ alignSelf: "flex-end" }}
+          className={styles.more}
+          onClick={() => setNumberOfPosts(numberOfPosts + 6)}
+        >
+          Load more ...
+        </button>
+      ) : null}
     </div>
   );
 };

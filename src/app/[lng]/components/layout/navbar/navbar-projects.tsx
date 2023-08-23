@@ -19,7 +19,7 @@ const NavbarProjects = ({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       // @ts-ignore
-      if (ref.current && !ref.current.contains(event.target)) {
+      if (reference.current && !reference.current.contains(event.target)) {
         setIsOpen(false);
       }
     };

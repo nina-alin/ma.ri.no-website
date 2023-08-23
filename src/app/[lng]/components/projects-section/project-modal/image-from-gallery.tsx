@@ -1,10 +1,7 @@
 "use client";
 
-import {
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import Image from "next/image";
+import { useContext, useEffect, useState } from "react";
 
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import ImageModal from "@/app/[lng]/components/projects-section/project-modal/image-modal";
@@ -16,9 +13,14 @@ import styles from "./image-from-gallery.module.css";
 interface ImageFromGalleryProperties {
   post: PostWithType;
   posts: PostWithType[];
+  numberOfPosts: number;
 }
 
-const ImageFromGallery = ({ post, posts }: ImageFromGalleryProperties) => {
+const ImageFromGallery = ({
+  post,
+  posts,
+  numberOfPosts,
+}: ImageFromGalleryProperties) => {
   const lng = useContext(LngContext);
   const [open, setOpen] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,11 +46,13 @@ const ImageFromGallery = ({ post, posts }: ImageFromGalleryProperties) => {
 
   return (
     <div className={styles.image}>
-      <img
+      <Image
         className={styles.imageDisplayed}
         src={post.mainImageUrl}
         alt={post.titleEn}
-        loading="lazy"
+        width={100}
+        height={100}
+        unoptimized={true}
       />
       <h3
         className={styles.text}
@@ -74,6 +78,7 @@ const ImageFromGallery = ({ post, posts }: ImageFromGalleryProperties) => {
             goToPrevious={goToPrevious}
             goToNext={goToNext}
             currentIndex={currentIndex}
+            numberOfPosts={numberOfPosts}
           />
         </Modal>
       )}

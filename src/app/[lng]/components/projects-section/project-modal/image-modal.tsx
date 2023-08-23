@@ -2,6 +2,7 @@
 
 import { Types } from "@prisma/client";
 import gsap from "gsap";
+import Image from "next/image";
 import { useContext, useEffect, useLayoutEffect, useRef } from "react";
 
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
@@ -11,19 +12,23 @@ import ArrowLeft from "@/app/components/svg/arrow-left";
 import ArrowRight from "@/app/components/svg/arrow-right";
 import { PostWithType } from "@/types/posts";
 import pickColorBasedOnBackground from "@/utils/pick-color-based-on-background";
+
 interface ImageModalProperties {
   onClose: () => void;
   posts: PostWithType[];
   goToPrevious: () => void;
   goToNext: () => void;
   currentIndex: number;
+  numberOfPosts: number;
 }
+
 const ImageModal = ({
   onClose,
   posts,
   goToPrevious,
   goToNext,
   currentIndex,
+  numberOfPosts,
 }: ImageModalProperties) => {
   const reference = useRef<HTMLDivElement>(null);
   const modalReference = useRef<HTMLDivElement>(null);
@@ -33,7 +38,11 @@ const ImageModal = ({
     posts[currentIndex].displayColor,
   );
 
-  const onWheel = (event: UIEvent & { deltaY: number }) => {
+  const onWheel = (
+    event: UIEvent & {
+      deltaY: number;
+    },
+  ) => {
     const element = reference.current;
     if (element) {
       if (event.deltaY == 0) return;
@@ -79,85 +88,86 @@ const ImageModal = ({
   }, [modalReference]);
   // TODO
   /*
-  useLayoutEffect(() => {
-    const pageContainer = document.querySelector("#container");
+                          useLayoutEffect(() => {
+                            const pageContainer = document.querySelector("#container");
+                
+                            if (!scroll) {
+                              (async () => {
+                                const LocomotiveScroll = (await import("locomotive-scroll")).default;
+                
+                                setScroll(
+                                    new LocomotiveScroll({
+                                      el: pageContainer,
+                                      smooth: true,
+                                      smoothMobile: true,
+                                      resetNativeScroll: true,
+                                      multiplier: 0.5,
+                                    }),
+                                );
+                
+                              })();
+                            }
+                                const animation = gsap.context(async () => {
+                              gsap.registerPlugin(ScrollTrigger);
+                
+                
+                              scroll.on("scroll", ScrollTrigger.update);
+                
+                              ScrollTrigger.scrollerProxy(pageContainer, {
+                                scrollTop(value) {
+                                  return arguments.length
+                                      ? scroll.scrollTo(value, 0, 0)
+                                      : scroll.scroll.instance.scroll.y;
+                                },
+                                getBoundingClientRect() {
+                                  return {
+                                    left: 0,
+                                    top: 0,
+                                    width: window.innerWidth,
+                                    height: window.innerHeight
+                                  };
+                                },
+                                pinType: pageContainer.style.transform ? "transform" : "fixed"
+                              });
+                
+                              window.addEventListener("load", function () {
+                                let pinBoxes = document.querySelectorAll("#horizontalScroll > *");
+                                let pinWrap = document.querySelector("#horizontalScroll");
+                                let pinWrapWidth = pinWrap.offsetWidth;
+                                let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+                
+                                gsap.to("#horizontalScroll", {
+                                  scrollTrigger: {
+                                    scroller: pageContainer, //locomotive-scroll
+                                    scrub: true,
+                                    trigger: "#sectionPin",
+                                    pin: true,
+                                    // anticipatePin: 1,
+                                    start: "top top",
+                                    end: pinWrapWidth
+                                  },
+                                  x: -horizontalScrollLength,
+                                  ease: "none"
+                                });
+                
+                                ScrollTrigger.addEventListener("refresh", () => scroll.update());
+                
+                                ScrollTrigger.refresh();
+                              });
+                
+                            }, scrollRef);
+                
+                            return () => {
+                              animation.revert();
+                              scroll && scroll.destroy();
+                            }
+                
+                          }, [scroll])
+                
+                           */
 
-    if (!scroll) {
-      (async () => {
-        const LocomotiveScroll = (await import("locomotive-scroll")).default;
+  console.log(currentIndex, numberOfPosts);
 
-        setScroll(
-            new LocomotiveScroll({
-              el: pageContainer,
-              smooth: true,
-              smoothMobile: true,
-              resetNativeScroll: true,
-              multiplier: 0.5,
-            }),
-        );
-
-      })();
-    }
-        const animation = gsap.context(async () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-
-      scroll.on("scroll", ScrollTrigger.update);
-
-      ScrollTrigger.scrollerProxy(pageContainer, {
-        scrollTop(value) {
-          return arguments.length
-              ? scroll.scrollTo(value, 0, 0)
-              : scroll.scroll.instance.scroll.y;
-        },
-        getBoundingClientRect() {
-          return {
-            left: 0,
-            top: 0,
-            width: window.innerWidth,
-            height: window.innerHeight
-          };
-        },
-        pinType: pageContainer.style.transform ? "transform" : "fixed"
-      });
-
-      window.addEventListener("load", function () {
-        let pinBoxes = document.querySelectorAll("#horizontalScroll > *");
-        let pinWrap = document.querySelector("#horizontalScroll");
-        let pinWrapWidth = pinWrap.offsetWidth;
-        let horizontalScrollLength = pinWrapWidth - window.innerWidth;
-
-        gsap.to("#horizontalScroll", {
-          scrollTrigger: {
-            scroller: pageContainer, //locomotive-scroll
-            scrub: true,
-            trigger: "#sectionPin",
-            pin: true,
-            // anticipatePin: 1,
-            start: "top top",
-            end: pinWrapWidth
-          },
-          x: -horizontalScrollLength,
-          ease: "none"
-        });
-
-        ScrollTrigger.addEventListener("refresh", () => scroll.update());
-
-        ScrollTrigger.refresh();
-      });
-
-    }, scrollRef);
-
-    return () => {
-      animation.revert();
-      scroll && scroll.destroy();
-    }
-
-  }, [scroll])
-
-   */
-
-  // @ts-ignore
   return (
     <div
       id={"container"}
@@ -203,20 +213,24 @@ const ImageModal = ({
           // @ts-ignore
           onWheel={onWheel}
         >
-          <img
-              key={currentIndex}
-              className={styles.imageModal}
-              src={posts[currentIndex].mainImageUrl}
-              alt={"main image from gallery"}
-              loading="lazy"
+          <Image
+            key={currentIndex}
+            className={styles.imageModal}
+            src={posts[currentIndex].mainImageUrl}
+            alt={"main image from gallery"}
+            width={100}
+            height={100}
+            unoptimized={true}
           />
           {posts[currentIndex].imagesUrl.map((image: string) => (
-            <img
+            <Image
               key={image}
               className={styles.imageModal}
               src={image}
               alt={"image from gallery"}
-              loading="lazy"
+              width={100}
+              height={100}
+              unoptimized={true}
             />
           ))}
         </div>
@@ -228,7 +242,7 @@ const ImageModal = ({
             : posts[currentIndex].contentJp)}
         </div>
         <div className={styles.actions}>
-          {posts[currentIndex].order === posts.length - 1 ? (
+          {currentIndex === 0 ? (
             <div />
           ) : (
             <AnimatedButton
@@ -241,7 +255,7 @@ const ImageModal = ({
               direction={"left"}
             />
           )}
-          {posts[currentIndex].order !== 0 && (
+          {currentIndex + 1 !== numberOfPosts && (
             <AnimatedButton
               text={"Next project"}
               id={"next-project"}

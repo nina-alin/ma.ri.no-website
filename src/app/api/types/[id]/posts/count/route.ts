@@ -5,18 +5,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  const url = new URL(request.url);
-
-  const posts = await prisma.posts.findMany({
-    include: {
-      type: true,
-    },
-    ...(url.searchParams.get("take") && {
-      take: Number.parseInt(url.searchParams.get("take") as string),
-    }),
-    orderBy: {
-      year: "desc",
-    },
+  const posts = await prisma.posts.count({
     where: {
       type: {
         some: {

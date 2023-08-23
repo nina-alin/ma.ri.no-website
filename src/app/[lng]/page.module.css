@@ -1,407 +1,454 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  padding-top: 25vh;
-  gap: 15vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 25vh;
+    gap: 15vh;
 }
 
 .hero {
-  display: flex;
-  justify-content: center;
-  gap: 20vw;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 20vw;
+    flex-wrap: wrap;
 }
 
 .name {
-  color: black;
-  position: absolute;
-  font-weight: 700;
-  font-size: 5rem;
-  z-index: 8;
-  top: -17vh;
-  left: -8.5vw;
-  width: 15vw;
-  text-decoration: underline;
+    color: black;
+    position: absolute;
+    font-weight: 700;
+    font-size: 5rem;
+    z-index: 8;
+    top: -17vh;
+    left: -8.5vw;
+    width: 15vw;
+    text-decoration: underline;
 }
 
 .backgroundLogo {
-  position: relative;
-  text-align: center;
-  color: white;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.backgroundLogo > img {
+    width: 25vw;
+    height: 90vh;
 }
 
 .textOverImage {
-  position: absolute;
-  bottom: 5vh;
-  right: 3vw;
-  font-size: 2rem;
-  text-align: end;
+    position: absolute;
+    bottom: 5vh;
+    right: 3vw;
+    font-size: 2rem;
+    text-align: end;
 }
 
 .backgroundLogoText {
-  font-weight: 200;
+    font-weight: 200;
 }
 
 .logo {
-  width: 20vw;
+    width: 20vw;
 }
 
 .aboutMe {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  gap: 28vh;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 28vh;
 }
 
 .aboutMeContent {
-  position: relative;
-  text-align: center;
+    position: relative;
+    text-align: center;
 }
 
 .aboutMeTitle {
-  font-weight: 700;
-  font-size: 5rem;
-  position: absolute;
-  left: -5vw;
-  z-index: 2;
-  width: 5vw;
-  text-decoration: underline;
+    font-weight: 700;
+    font-size: 5rem;
+    position: absolute;
+    left: -5vw;
+    z-index: 2;
+    width: 5vw;
+    text-decoration: underline;
 }
 
 .aboutMeText {
-  width: calc(100% - 15vw);
-  position: absolute;
-  text-align: justify;
-  font-size: 1.8rem;
-  font-weight: 600;
-  bottom: -22vh;
-  left: calc(100% - 80vw);
-  line-height: 3rem;
+    width: calc(100% - 15vw);
+    position: absolute;
+    text-align: justify;
+    font-size: 1.8rem;
+    font-weight: 600;
+    bottom: -22vh;
+    left: calc(100% - 80vw);
+    line-height: 3rem;
 }
 
 .more {
-  border: 2px solid black;
-  align-self: center;
-  color: black;
-  font-weight: 700;
-  background-color: white;
-  padding: 0.5rem 1rem;
-  font-size: 1.7rem;
-  display: flex;
-  align-items: center;
+    border: 2px solid black;
+    align-self: center;
+    color: black;
+    font-weight: 700;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
 }
 
 .more:hover {
-  border: 2px solid #8dc6b5;
-  color: #8dc6b5;
-  cursor: pointer;
+    border: 2px solid #8dc6b5;
+    color: #8dc6b5;
+    cursor: pointer;
 }
 
 .more:hover .arrowRight {
-  fill: #8dc6b5;
-  stroke: #8dc6b5;
+    fill: #8dc6b5;
+    stroke: #8dc6b5;
 }
 
 .myStory {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 5vw;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5vw;
+    flex-wrap: wrap;
 }
 
 .myStoryAbout {
-  display: flex;
-  flex-direction: column;
-  gap: 10vh;
-  align-items: end;
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+    align-items: end;
 }
 
 .myStoryTitle {
-  font-weight: 700;
-  font-size: 5rem;
-  text-align: end;
-  width: 15vw;
-  text-decoration: underline;
+    font-weight: 700;
+    font-size: 5rem;
+    text-align: end;
+    width: 15vw;
+    text-decoration: underline;
 }
 
 .myStoryText {
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 3rem;
-  width: 23vw;
-  text-align: end;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 3rem;
+    width: 23vw;
+    text-align: end;
 }
 
 .discover {
-  border: 2px solid black;
-  color: black;
-  font-weight: 700;
-  background-color: white;
-  padding: 0.5rem 1rem;
-  font-size: 1.7rem;
-  display: flex;
-  align-items: center;
+    border: 2px solid black;
+    color: black;
+    font-weight: 700;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
 }
 
 .discover:hover {
-  border: 2px solid #e0dd6a;
-  color: #e0dd6a;
-  cursor: pointer;
+    border: 2px solid #e0dd6a;
+    color: #e0dd6a;
+    cursor: pointer;
 }
 
 .discover:hover .arrowRightAbout {
-  fill: #e0dd6a;
-  stroke: #e0dd6a;
+    fill: #e0dd6a;
+    stroke: #e0dd6a;
 }
 
 .projects {
-  display: flex;
-  flex-direction: column;
-  gap: 5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
 }
 
 .projectsBanner {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .projectsTitle {
-  font-weight: 700;
-  font-size: 5rem;
-  width: 10vw;
-  text-decoration: underline;
+    font-weight: 700;
+    font-size: 5rem;
+    width: 10vw;
+    text-decoration: underline;
 }
 
 .projectsBannerLinks {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-weight: 700;
-  font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-weight: 700;
+    font-size: 2.5rem;
 }
 
 .underlineAnimation {
-  position: relative;
-  display: inline-block;
-  width: fit-content;
-  text-underline-offset: 0.6rem;
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    text-underline-offset: 0.6rem;
 }
 
 .underlineAnimation::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 4px;
-  top: 5.2vh;
-  left: 0;
-  background-color: black;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 4px;
+    top: 5.2vh;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
 }
 
 .underlineAnimation:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .underlineAnimation:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .projectsGallery {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 5vh;
-  column-gap: 2vw;
-  justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5vh;
+    column-gap: 2vw;
+    justify-content: space-between;
 }
 
 @media only screen and (max-width: 599px) {
-  .name {
-    font-size: 2rem;
-    width: 30vw;
-  }
-  .backgroundLogo > img {
-    width: 250px;
-    height: 400px;
-  }
-  .backgroundLogoText {
-    font-size: 1rem;
-  }
-  .textOverImage {
-    font-size: 1.5rem;
-  }
-  .logo {
-    width: 200px;
-    height: 250px;
-  }
-  .aboutMe {
-    gap: 5vh;
-  }
-  .aboutMeTitle {
-    font-size: 2rem;
-  }
-  .aboutMeImage {
-    width: 80vw;
-    height: 20vh;
-  }
-  .aboutMeText {
-    font-size: 1rem;
-    width: 80vw;
-    line-height: 1.5rem;
-  }
-  .more {
-    font-size: 1rem;
-  }
-  .myStory {
-    flex-direction: column;
-    align-items: center;
-    gap: 5vh;
-  }
-  .myStory > img {
-    width: 80vw;
-    height: 20vh;
-  }
-  .myStoryAbout {
-    align-items: center;
-    gap: 5vh;
-  }
-  .myStoryTitle {
-    font-size: 2rem;
-  }
-  .myStoryText {
-    line-height: 1.5rem;
-    font-size: 1rem;
-    width: 70vw;
-  }
-  .discover {
-    font-size: 1rem;
-  }
-  .projectsBanner {
-    max-width: 90vw;
-    align-self: center;
-    flex-direction: column;
-  }
-  .projectsTitle {
-    font-size: 2rem;
-  }
-  .projectsBannerLinks {
-    font-size: 1.5rem;
-  }
+    .name {
+        font-size: 2rem;
+        width: 30vw;
+    }
+
+    .backgroundLogo > img {
+        width: 250px;
+        height: 400px;
+    }
+
+    .backgroundLogoText {
+        font-size: 1rem;
+    }
+
+    .textOverImage {
+        font-size: 1.5rem;
+    }
+
+    .logo {
+        width: 200px;
+        height: 250px;
+    }
+
+    .aboutMe {
+        gap: 5vh;
+    }
+
+    .aboutMeTitle {
+        font-size: 2rem;
+    }
+
+    .aboutMeImage {
+        width: 80vw;
+        height: 20vh;
+    }
+
+    .aboutMeText {
+        font-size: 1rem;
+        width: 80vw;
+        line-height: 1.5rem;
+    }
+
+    .more {
+        font-size: 1rem;
+    }
+
+    .myStory {
+        flex-direction: column;
+        align-items: center;
+        gap: 5vh;
+    }
+
+    .myStory > img {
+        width: 80vw;
+        height: 20vh;
+    }
+
+    .myStoryAbout {
+        align-items: center;
+        gap: 5vh;
+    }
+
+    .myStoryTitle {
+        font-size: 2rem;
+    }
+
+    .myStoryText {
+        line-height: 1.5rem;
+        font-size: 1rem;
+        width: 70vw;
+    }
+
+    .discover {
+        font-size: 1rem;
+    }
+
+    .projectsBanner {
+        max-width: 90vw;
+        align-self: center;
+        flex-direction: column;
+    }
+
+    .projectsTitle {
+        font-size: 2rem;
+    }
+
+    .projectsBannerLinks {
+        font-size: 1.5rem;
+    }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 991px) {
-  .main {
-    padding-top: 15vh;
-  }
-  .name {
-    font-size: 2.5rem;
-    top: -8vh;
-  }
-  .hero {
-    flex-direction: column;
-    align-items: center;
-    gap: 10vh;
-  }
-  .backgroundLogo > img {
-    width: 400px;
-    height: 600px;
-  }
-  .logo {
-    width: 300px;
-    height: 350px;
-  }
-  .aboutMe {
-    gap: 3.5vh;
-  }
-  .aboutMeTitle {
-    font-size: 2.5rem;
-  }
-  .aboutMeText {
-    width: 70vw;
-    align-self: flex-end;
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-  }
-  .aboutMeImage {
-    width: 500px;
-    height: 300px;
-  }
-  .myStory > img {
-    width: 500px;
-    height: 300px;
-  }
-  .myStoryAbout {
-    align-items: center;
-    gap: 5vh;
-  }
-  .myStoryTitle {
-    font-size: 2.5rem;
-  }
-  .myStoryText {
-    line-height: 1.5rem;
-    font-size: 1.5rem;
-    width: 70vw;
-  }
-  .projectsTitle {
-    font-size: 2.5rem;
-  }
-  .projectsBannerLinks {
-    font-size: 2rem;
-  }
+    .main {
+        padding-top: 15vh;
+    }
+
+    .name {
+        font-size: 2.5rem;
+        top: -8vh;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        gap: 10vh;
+    }
+
+    .backgroundLogo > img {
+        width: 400px;
+        height: 600px;
+    }
+
+    .logo {
+        width: 300px;
+        height: 350px;
+    }
+
+    .aboutMe {
+        gap: 3.5vh;
+    }
+
+    .aboutMeTitle {
+        font-size: 2.5rem;
+    }
+
+    .aboutMeText {
+        width: 70vw;
+        align-self: flex-end;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+
+    .aboutMeImage {
+        width: 500px;
+        height: 300px;
+    }
+
+    .myStory > img {
+        width: 500px;
+        height: 300px;
+    }
+
+    .myStoryAbout {
+        align-items: center;
+        gap: 5vh;
+    }
+
+    .myStoryTitle {
+        font-size: 2.5rem;
+    }
+
+    .myStoryText {
+        line-height: 1.5rem;
+        font-size: 1.5rem;
+        width: 70vw;
+    }
+
+    .projectsTitle {
+        font-size: 2.5rem;
+    }
+
+    .projectsBannerLinks {
+        font-size: 2rem;
+    }
 }
 
 @media only screen and (max-width: 991px) {
-  .aboutMeTitle {
-    position: static;
-  }
-  .aboutMeContent {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    gap: 5vh;
-  }
-  .aboutMeText {
-    position: static;
-  }
-  .projectsGallery {
-    justify-content: center;
-  }
+    .aboutMeTitle {
+        position: static;
+    }
+
+    .aboutMeContent {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        gap: 5vh;
+    }
+
+    .aboutMeText {
+        position: static;
+    }
+
+    .projectsGallery {
+        justify-content: center;
+    }
 }
 
 @media only screen and (min-width: 991px) and (max-width: 1199px) {
-  .name {
-    font-size: 4rem;
-    left: -3vw;
-  }
-  .aboutMeTitle {
-    font-size: 4rem;
-    left: 5vw;
-  }
-  .aboutMeText {
-    font-size: 1.5rem;
-    justify-self: left;
-    width: 50vw;
-    bottom: -25vh;
-  }
-  .myStory > img {
-    width: 40vw;
-    height: 50vh;
-  }
-  .myStoryTitle {
-    font-size: 4rem;
-    align-self: center;
-  }
-  .myStoryText {
-    font-size: 1.5rem;
-  }
-  .projectsTitle {
-    font-size: 4rem;
-  }
-  .projectsBannerLinks {
-    font-size: 2rem;
-  }
+    .name {
+        font-size: 4rem;
+        left: -3vw;
+    }
+
+    .aboutMeTitle {
+        font-size: 4rem;
+        left: 5vw;
+    }
+
+    .aboutMeText {
+        font-size: 1.5rem;
+        justify-self: left;
+        width: 50vw;
+        bottom: -25vh;
+    }
+
+    .myStory > img {
+        width: 40vw;
+        height: 50vh;
+    }
+
+    .myStoryTitle {
+        font-size: 4rem;
+        align-self: center;
+    }
+
+    .myStoryText {
+        font-size: 1.5rem;
+    }
+
+    .projectsTitle {
+        font-size: 4rem;
+    }
+
+    .projectsBannerLinks {
+        font-size: 2rem;
+    }
 }

@@ -22,7 +22,7 @@ export function middleware(request: NextRequest) {
 
   if (
     !languages.some((language) =>
-        request.nextUrl.pathname.startsWith(`/${language}`),
+      request.nextUrl.pathname.startsWith(`/${language}`),
     ) &&
     !request.nextUrl.pathname.startsWith("/_next") &&
     !request.nextUrl.pathname.startsWith("/admin")

@@ -4,11 +4,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "ik.imagekit.io",
-        pathname: `/${process.env.NEXT_PUBLIC_IMAGEKIT_ID}/**`,
-      },
-      {
-        protocol: "https",
         hostname: "drive.google.com",
         pathname: "/uc**",
       },
