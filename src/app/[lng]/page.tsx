@@ -1,6 +1,8 @@
 import { Alert } from "@prisma/client";
 import Image from "next/image";
 
+import DiscoverMyStoryButton from "@/app/[lng]/components/buttons/discover-my-story-button";
+import MoreButton from "@/app/[lng]/components/buttons/more-button";
 import HomeClient from "@/app/[lng]/components/home-client";
 import TypesClient from "@/app/[lng]/components/projects-section/types/types-client";
 import Logo from "@/app/[lng]/components/svg/logo";
@@ -122,13 +124,7 @@ const Home = async ({ params: { lng } }: Home) => {
                 aliquip ex ea
               </p>
             </div>
-            <AnimatedButton
-              text={t("home.more")}
-              id={"see-more"}
-              icon={<ArrowRight />}
-              className={styles.more}
-              direction={"right"}
-            />
+            <MoreButton moreTranslation={t("home.more")} />
           </div>
           <div className={styles.myStory}>
             <Image
@@ -155,12 +151,8 @@ const Home = async ({ params: { lng } }: Home) => {
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                 diam nonummy nibh euis
               </p>
-              <AnimatedButton
-                text={t("home.discover-my-story")}
-                id={"discover-my-story"}
-                icon={<ArrowRight />}
-                className={styles.discover}
-                direction={"right"}
+              <DiscoverMyStoryButton
+                discoverTranslation={t("home.discover-my-story")}
               />
             </div>
           </div>
