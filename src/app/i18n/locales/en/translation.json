@@ -30,5 +30,13 @@
     "discover-my-story": "DISCOVER MY STORY",
     "projects-gallery": "Projects Gallery",
     "all": "All"
+  },
+  "footer": {
+    "description": "ma.ri.no studio is company ran by Déborah Marino, a graphic designer based in Asahikawa, Japan. She is specialized in branding, packaging, editorial and illustration. She is also a creative director and a visual communication expert.",
+    "menu": "Menu",
+    "projects": "Projects",
+    "contact": "Contact",
+    "designedBy": "Design by Déborah Marino and ",
+    "developedBy": "Developed by "
   }
 }
