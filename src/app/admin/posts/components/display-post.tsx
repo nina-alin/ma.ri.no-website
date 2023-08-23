@@ -5,15 +5,22 @@ import { Dispatch, SetStateAction } from "react";
 // @ts-ignore
 import { SketchPicker } from "react-color";
 
-import styles from "@/app/admin/components/add-post/add-post-form.module.css";
+import styles from "@/app/admin/posts/components/add-post-form.module.css";
 import { PostWithoutOrderAndWithoutId } from "@/types/posts";
+
 interface DisplayPostProperties {
   setForm: Dispatch<SetStateAction<PostWithoutOrderAndWithoutId>>;
   form: PostWithoutOrderAndWithoutId;
   updateForm: (event: any, key: string) => void;
   types: Types[];
 }
-const DisplayPost = ({ setForm, form, updateForm, types }: DisplayPostProperties) => {
+
+const DisplayPost = ({
+  setForm,
+  form,
+  updateForm,
+  types,
+}: DisplayPostProperties) => {
   const handleTypeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     type: Types,

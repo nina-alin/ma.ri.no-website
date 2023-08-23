@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/app/admin/components/add-post/add-post-form.module.css";
+import styles from "@/app/admin/posts/components/add-post-form.module.css";
 
 interface DescriptionsPostProperties {
   form: {

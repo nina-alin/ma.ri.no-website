@@ -12,11 +12,22 @@ const ProtectedRouteProvider = ({
   const session = useSession();
   const router = useRouter();
 
-  if (session.status === "unauthenticated") {
-    router.push("/api/auth/signin");
-  }
+  switch (session.status) {
+    case "unauthenticated": {
+      router.push("/api/auth/signin");
 
-  return children;
+      break;
+    }
+    case "loading": {
+      return <div>Loading...</div>;
+    }
+    case "authenticated": {
+      return children;
+    }
+    default: {
+      return <div>Something went wrong</div>;
+    }
+  }
 };
 
 export default ProtectedRouteProvider;

@@ -20,6 +20,7 @@ type Language = "fr" | "en" | "ja";
 interface SeePostsProperties {
   posts: PostWithType[];
 }
+
 const SeePosts = ({ posts }: SeePostsProperties) => {
   const router = useRouter();
   const [langTitle, setLangTitle] = useState<Language>("fr");
@@ -146,7 +147,9 @@ const SeePosts = ({ posts }: SeePostsProperties) => {
                 : post.contentJp)}
             </td>
             <td>
-              <img
+              <Image
+                width={100}
+                height={100}
                 className={styles.imageSize}
                 src={post.mainImageUrl}
                 alt={`${post.titleEn} image`}
@@ -162,7 +165,9 @@ const SeePosts = ({ posts }: SeePostsProperties) => {
             <td>{post.year}</td>
             <td>
               {post.imagesUrl.map((image: string) => (
-                <img
+                <Image
+                  width={100}
+                  height={100}
                   className={styles.imageSize}
                   key={image}
                   src={image}

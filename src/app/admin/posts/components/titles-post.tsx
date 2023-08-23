@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/app/admin/components/add-post/add-post-form.module.css";
+import styles from "@/app/admin/posts/components/add-post-form.module.css";
 
 interface TitlesPostProperties {
   form: {
@@ -10,6 +10,7 @@ interface TitlesPostProperties {
   };
   updateForm: (event: any, key: string) => void;
 }
+
 const TitlesPost = ({ form, updateForm }: TitlesPostProperties) => {
   return (
     <div className={styles.section}>

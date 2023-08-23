@@ -1,4 +1,4 @@
-import AddPostForm from "@/app/admin/components/add-post/add-post-form";
+import AddPostForm from "@/app/admin/posts/components/add-post-form";
 import { prisma } from "@/lib/prisma";
 
 const EditPostPage = async ({ params }: { params: { id: string } }) => {

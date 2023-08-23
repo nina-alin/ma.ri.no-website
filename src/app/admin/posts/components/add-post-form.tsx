@@ -2,14 +2,19 @@
 
 import { Types } from "@prisma/client";
 import { usePathname, useRouter } from "next/navigation";
-import { ChangeEvent, MouseEventHandler, useState } from "react";
+import {
+  ChangeEvent,
+  MouseEventHandler,
+  SyntheticEvent,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 
-import DescriptionsPost from "@/app/admin/components/add-post/descriptions-post";
-import DisplayPost from "@/app/admin/components/add-post/display-post";
-import ImageUpload from "@/app/admin/components/add-post/image-upload";
-import TitlesPost from "@/app/admin/components/add-post/titles-post";
 import Snackbar from "@/app/admin/components/snackbar/snackbar";
+import DescriptionsPost from "@/app/admin/posts/components/descriptions-post";
+import DisplayPost from "@/app/admin/posts/components/display-post";
+import ImageUpload from "@/app/admin/posts/components/image-upload";
+import TitlesPost from "@/app/admin/posts/components/titles-post";
 import { PostWithoutOrderAndWithoutId, PostWithType } from "@/types/posts";
 
 import styles from "./add-post-form.module.css";
@@ -52,8 +57,9 @@ const AddPostForm = ({ post, types }: AddPostFormProperties) => {
     });
   };
 
-  const handleSubmit = async (event: MouseEventHandler<HTMLButtonElement>) => {
-    // @ts-ignore
+  const handleSubmit = async (
+    event: SyntheticEvent<HTMLFormElement, SubmitEvent>,
+  ) => {
     event.preventDefault();
 
     if (isAddPage) {
@@ -101,15 +107,10 @@ const AddPostForm = ({ post, types }: AddPostFormProperties) => {
 
   return (
     <main className={styles.main}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.heading}>
           <h1>{isAddPage ? "Ajouter un projet" : `Editer ${post?.titleFr}`}</h1>
-          <button
-            className={styles.submit}
-            type={"submit"}
-            // @ts-ignore
-            onClick={handleSubmit}
-          >
+          <button className={styles.submit} type={"submit"}>
             Envoyer
           </button>
         </div>

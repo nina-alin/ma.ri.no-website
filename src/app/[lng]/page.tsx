@@ -1,3 +1,4 @@
+import { Alert } from "@prisma/client";
 import Image from "next/image";
 
 import HomeClient from "@/app/[lng]/components/home-client";
@@ -19,15 +20,49 @@ interface Home {
   };
 }
 
+const getAlert = async () => {
+  return fetch(`${process.env.NEXTAUTH_URL}/api/alerts`, {
+    method: "GET",
+  });
+};
+
+const getTypes = async () => {
+  return fetch(`${process.env.NEXTAUTH_URL}/api/types`, {
+    method: "GET",
+    cache: "no-cache",
+  });
+};
+
 const Home = async ({ params: { lng } }: Home) => {
   const { t } = await translate(lng);
 
-  const types = await prisma.types.findMany();
+  const types = await getTypes().then((response) => response.json());
+  const alert = await getAlert().then((response) => response.json());
+
+  console.log(alert);
 
   return (
     <LocomotiveScrollAppProvider>
       <HomeClient lng={lng}>
         <div className={styles.main} data-scroll-section>
+          {alert.status === "enabled" && (
+            <div className={styles.alert}>
+              <h3>
+                {lng === "fr"
+                  ? alert.titleFr
+                  : (lng === "en"
+                  ? alert.titleEn
+                  : alert.titleJp)}
+              </h3>
+              <p>
+                {lng === "fr"
+                  ? alert.contentFr
+                  : (lng === "en"
+                  ? alert.contentEn
+                  : alert.contentJp)}
+              </p>
+            </div>
+          )}
           <div className={styles.hero}>
             <div className={styles.backgroundLogo} id={"background-logo"}>
               <Image
