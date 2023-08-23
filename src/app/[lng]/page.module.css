@@ -109,6 +109,11 @@
     font-size: 1.7rem;
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+}
+
+.more > svg {
+    stroke: black;
 }
 
 .more:hover {
@@ -117,7 +122,7 @@
     cursor: pointer;
 }
 
-.more:hover .arrowRight {
+.more:hover > svg {
     fill: #8dc6b5;
     stroke: #8dc6b5;
 }
@@ -162,6 +167,11 @@
     font-size: 1.7rem;
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+}
+
+.discover > svg {
+    stroke: black;
 }
 
 .discover:hover {
@@ -170,7 +180,7 @@
     cursor: pointer;
 }
 
-.discover:hover .arrowRightAbout {
+.discover:hover > svg {
     fill: #e0dd6a;
     stroke: #e0dd6a;
 }

@@ -125,7 +125,7 @@ const Home = async ({ params: { lng } }: Home) => {
             <AnimatedButton
               text={t("home.more")}
               id={"see-more"}
-              icon={<ArrowRight color={styles.arrowRight} />}
+              icon={<ArrowRight />}
               className={styles.more}
               direction={"right"}
             />
@@ -158,7 +158,7 @@ const Home = async ({ params: { lng } }: Home) => {
               <AnimatedButton
                 text={t("home.discover-my-story")}
                 id={"discover-my-story"}
-                icon={<ArrowRight color={styles.arrowRightAbout} />}
+                icon={<ArrowRight />}
                 className={styles.discover}
                 direction={"right"}
               />
