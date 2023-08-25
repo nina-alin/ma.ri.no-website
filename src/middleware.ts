@@ -11,16 +11,17 @@ export const config = {
 const cookieName = "i18next";
 
 export function middleware(request: NextRequest) {
-  const language = () => {
-    if (request.cookies.has(cookieName)) {
-      // @ts-ignore
-      return acceptLanguage.get(request.cookies.get(cookieName).value);
-    } else if (acceptLanguage.get(request.headers.get("Accept-Language"))) {
-      return acceptLanguage.get(request.headers.get("Accept-Language"));
-    } else {
-      return fallbackLng;
-    }
-  };
+  let language;
+  if (request.cookies.has(cookieName)) {
+    // @ts-ignore
+    language = acceptLanguage.get(request.cookies.get(cookieName).value);
+  }
+  if (!language) {
+    language = acceptLanguage.get(request.headers.get("Accept-Language"));
+  }
+  if (!language) {
+    language = fallbackLng;
+  }
 
   if (
     !languages.some((language) =>
