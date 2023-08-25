@@ -1,36 +1,23 @@
 "use client";
 
 import { gsap, Power1, Power2 } from "gsap";
-import {
-  ReactNode,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { ReactNode, useEffect, useLayoutEffect, useRef } from "react";
 
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
-import { SmoothScrollContext } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
 
-const NavbarAnimations = ({ children }: { children: ReactNode }) => {
-  const { scroll } = useContext(SmoothScrollContext);
-
-  const [reversed, setReversed] = useState(false);
-  const [isPlayAnimation, setIsPlayAnimation] = useState(false);
-
+const NavbarAnimations = ({
+  openMenu,
+  isPlayAnimation,
+  reversed,
+  children,
+}: {
+  children: ReactNode;
+  openMenu: () => void;
+  isPlayAnimation: boolean;
+  reversed: boolean;
+}) => {
   const navReference = useRef<HTMLDivElement>(null);
   const tl = useRef<GSAPTimeline>();
-
-  const openMenu = () => {
-    setIsPlayAnimation(true);
-    setReversed(!reversed);
-    if (scroll) {
-      // TODO
-      // @ts-ignore
-      document.body.style.overflow = reversed ? scroll.stop() : scroll.start();
-    }
-  };
 
   // navbar fade in
   useLayoutEffect(() => {

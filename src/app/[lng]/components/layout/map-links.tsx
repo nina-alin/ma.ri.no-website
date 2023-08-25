@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useContext } from "react";
 
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
-import { translate } from "@/app/i18n";
+import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import { useTranslation } from "@/app/i18n/client";
 
 const links = [
   {
@@ -18,13 +22,15 @@ const links = [
   },
 ];
 
-const MapLinks = async ({ lng }: { lng: string }) => {
-  const { t } = await translate(lng);
+const MapLinks = ({ onClose }: { onClose?: () => void }) => {
+  const lng = useContext(LngContext);
+  const { t } = useTranslation(lng);
 
   return (
     <>
       {links.map((link) => (
         <Link
+          onClick={onClose && onClose}
           data-side-text
           className={styles[link.translation]}
           key={link.translation}

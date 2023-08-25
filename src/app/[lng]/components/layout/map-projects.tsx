@@ -2,21 +2,23 @@
 
 import { Types } from "@prisma/client";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { useChosenTypeContext } from "@/app/[lng]/components/chosen-type/chosen-type-context";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
+import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 
 const MapProjects = ({
-  lng,
   projectsAlreadyFetched,
 }: {
-  lng: string;
   projectsAlreadyFetched?: Types[];
 }) => {
   const router = useRouter();
-  const [projects, setProjects] = useState<Types[]>([]);
+
+  const lng = useContext(LngContext);
   const { chosenType, setChosenType } = useChosenTypeContext();
+
+  const [projects, setProjects] = useState<Types[]>([]);
 
   useEffect(() => {
     if (projectsAlreadyFetched) {
