@@ -5,13 +5,12 @@ interface AboutMeProperties {
     lng: string;
   };
 }
+
 const AboutMe = async ({ params: { lng } }: AboutMeProperties) => {
   return (
-    <LocomotiveScrollAppProvider>
-      <div data-scroll-section>
-        <h1>About me</h1>
-      </div>
-    </LocomotiveScrollAppProvider>
+    <div>
+      <h1>About me</h1>
+    </div>
   );
 };
 

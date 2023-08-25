@@ -16,6 +16,7 @@ export const LocomotiveScrollAppProvider = ({
   const [scroll, setScroll] = useState<LocomotiveScroll | null>(null);
 
   useEffect(() => {
+    console.log("scroll", scroll);
     if (scroll) {
       // prevent resize issues
       new ResizeObserver(() => scroll.update()).observe(
