@@ -1,14 +1,13 @@
 import { Alert } from "@prisma/client";
 import Image from "next/image";
 
+import AboutMeSection from "@/app/[lng]/components/about-me-section";
 import DiscoverMyStoryButton from "@/app/[lng]/components/buttons/discover-my-story-button";
 import MoreButton from "@/app/[lng]/components/buttons/more-button";
 import HomeClient from "@/app/[lng]/components/home-client";
+import MyStorySection from "@/app/[lng]/components/my-story-section";
 import TypesClient from "@/app/[lng]/components/projects-section/types/types-client";
 import Logo from "@/app/[lng]/components/svg/logo";
-import AnimatedButton from "@/app/components/gsap/animated-button";
-import { LocomotiveScrollAppProvider } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
-import ArrowRight from "@/app/components/svg/arrow-right";
 import { translate } from "@/app/i18n";
 import { prisma } from "@/lib/prisma";
 
@@ -37,135 +36,67 @@ const Home = async ({ params: { lng } }: Home) => {
   const alert = (await getAlert()) as Alert;
 
   return (
-    <LocomotiveScrollAppProvider>
-      <HomeClient lng={lng}>
-        <div className={styles.main} data-scroll-section>
-          {alert.status === "enabled" && (
-            <div className={styles.alert}>
-              <h3>
-                {lng === "fr"
-                  ? alert.titleFr
-                  : (lng === "en"
-                  ? alert.titleEn
-                  : alert.titleJp)}
-              </h3>
-              <p>
-                {lng === "fr"
-                  ? alert.contentFr
-                  : (lng === "en"
-                  ? alert.contentEn
-                  : alert.contentJp)}
-              </p>
-            </div>
-          )}
-          <div className={styles.hero}>
-            <div className={styles.backgroundLogo} id={"background-logo"}>
-              <Image
-                src={logoBackground}
-                alt={"logo background"}
-                width={"1000"}
-                height={"500"}
-              />
-              <h1
-                id={"name"}
-                className={styles.name}
-                data-scroll
-                data-scroll-speed="1"
-                data-scroll-delay="0.2"
-              >
-                Déborah Marino デボラ マリノ
-              </h1>
-              <p className={styles.textOverImage}>
-                <span className={styles.backgroundLogoTitle}>
-                  {t("home.creative-director")}/<br />
-                  {t("home.graphic-designer")}
-                </span>
-                <br /> <br />
-                <span className={styles.backgroundLogoText}>
-                  {t("home.graphic-design")}
-                  <br />
-                  {t("home.illustration")}
-                  <br />
-                  {t("home.packaging-branding")}
-                  <br />
-                  {t("home.creative-concepts")}
-                </span>
-              </p>
-            </div>
-            <Logo />
+    <HomeClient lng={lng}>
+      <div className={styles.main}>
+        {alert.status === "enabled" && (
+          <div className={styles.alert}>
+            <h3>
+              {lng === "fr"
+                ? alert.titleFr
+                : (lng === "en"
+                ? alert.titleEn
+                : alert.titleJp)}
+            </h3>
+            <p>
+              {lng === "fr"
+                ? alert.contentFr
+                : (lng === "en"
+                ? alert.contentEn
+                : alert.contentJp)}
+            </p>
           </div>
-          <div className={styles.aboutMe}>
-            <div className={styles.aboutMeContent}>
-              <h2
-                className={styles.aboutMeTitle}
-                data-scroll
-                data-scroll-speed="1"
-                data-scroll-delay="0.2"
-              >
-                A world of creativity
-              </h2>
-              <Image
-                className={styles.aboutMeImage}
-                src={placeholder}
-                alt={"placeholder"}
-                width={"1000"}
-                height={"500"}
-              />
-              <p
-                className={styles.aboutMeText}
-                data-scroll
-                data-scroll-speed="2"
-                data-scroll-delay="0.2"
-              >
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                aliquip ex ea
-              </p>
-            </div>
-            <MoreButton moreTranslation={t("home.more")} />
-          </div>
-          <div className={styles.myStory}>
+        )}
+        <div className={styles.hero}>
+          <div className={styles.backgroundLogo} id={"background-logo"}>
             <Image
-              src={placeholder}
-              alt={"placeholder"}
-              width={"700"}
-              height={"600"}
+              src={logoBackground}
+              alt={"logo background"}
+              width={"1000"}
+              height={"500"}
             />
-            <div className={styles.myStoryAbout}>
-              <h2
-                className={styles.myStoryTitle}
-                data-scroll
-                data-scroll-speed="1"
-                data-scroll-delay="0.2"
-              >
-                {t("home.my-story")}
-              </h2>
-              <p
-                className={styles.myStoryText}
-                data-scroll
-                data-scroll-speed="2"
-                data-scroll-delay="0.2"
-              >
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euis
-              </p>
-              <DiscoverMyStoryButton
-                discoverTranslation={t("home.discover-my-story")}
-              />
-            </div>
+            <h1
+              id={"name"}
+              className={styles.name}
+              data-scroll
+              data-scroll-speed="1"
+              data-scroll-delay="0.2"
+            >
+              Déborah Marino デボラ マリノ
+            </h1>
+            <p className={styles.textOverImage}>
+              <span className={styles.backgroundLogoTitle}>
+                {t("home.creative-director")}/<br />
+                {t("home.graphic-designer")}
+              </span>
+              <br /> <br />
+              <span className={styles.backgroundLogoText}>
+                {t("home.graphic-design")}
+                <br />
+                {t("home.illustration")}
+                <br />
+                {t("home.packaging-branding")}
+                <br />
+                {t("home.creative-concepts")}
+              </span>
+            </p>
           </div>
-          <TypesClient
-            types={types}
-            translations={{
-              all: t("home.all"),
-              projectGallery: t("home.projects-gallery"),
-            }}
-          />
+          <Logo />
         </div>
-      </HomeClient>
-    </LocomotiveScrollAppProvider>
+        <AboutMeSection />
+        <MyStorySection t={t} />
+        <TypesClient types={types} />
+      </div>
+    </HomeClient>
   );
 };
 

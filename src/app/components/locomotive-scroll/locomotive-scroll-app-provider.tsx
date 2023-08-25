@@ -1,8 +1,11 @@
 "use client";
 
+import LocomotiveScroll from "locomotive-scroll";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-export const SmoothScrollContext = createContext({
+export const SmoothScrollContext = createContext<{
+  scroll: LocomotiveScroll | null;
+}>({
   scroll: null,
 });
 export const LocomotiveScrollAppProvider = ({
@@ -10,33 +13,40 @@ export const LocomotiveScrollAppProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [scroll, setScroll] = useState(null);
+  const [scroll, setScroll] = useState<LocomotiveScroll | null>(null);
 
   useEffect(() => {
     if (scroll) {
       // prevent resize issues
-      // @ts-ignore
       new ResizeObserver(() => scroll.update()).observe(
-        // @ts-ignore
-        document.querySelector("[data-scroll-container]"),
+        document.querySelector("[data-scroll-container]") as HTMLElement,
       );
     } else {
       (async () => {
         try {
-          const loadedLocomotiveScroll = (await import(
-              // @ts-ignore
-              "locomotive-scroll"
-            ));
+          const loadedLocomotiveScroll = await import("locomotive-scroll");
           const LocomotiveScroll = loadedLocomotiveScroll.default;
 
           setScroll(
             new LocomotiveScroll({
-              el:
-                document.querySelector("[data-scroll-container]") ?? undefined,
+              el: (document.querySelector("[data-scroll-container]") ??
+                undefined) as HTMLElement,
               smooth: true,
-              smoothMobile: true,
+              class: "is-reveal",
               resetNativeScroll: true,
               multiplier: 0.5,
+              mobile: {
+                breakpoint: 0,
+                smooth: true,
+                multiplier: 15,
+                class: "is-reveal",
+              },
+              tablet: {
+                breakpoint: 0,
+                smooth: true,
+                // @ts-ignore
+                class: "is-reveal",
+              },
             }),
           );
         } catch (error) {
@@ -46,7 +56,6 @@ export const LocomotiveScrollAppProvider = ({
     }
 
     return () => {
-      // @ts-ignore
       scroll && scroll.destroy();
     };
   }, [scroll]);

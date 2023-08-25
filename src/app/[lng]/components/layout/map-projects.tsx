@@ -1,38 +1,54 @@
 "use client";
 
 import { Types } from "@prisma/client";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { useChosenTypeContext } from "@/app/[lng]/components/chosen-type/chosen-type-context";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
-import { prisma } from "@/lib/prisma";
-const MapProjects = ({ lng }: { lng: string }) => {
+
+const MapProjects = ({
+  lng,
+  projectsAlreadyFetched,
+}: {
+  lng: string;
+  projectsAlreadyFetched?: Types[];
+}) => {
+  const router = useRouter();
   const [projects, setProjects] = useState<Types[]>([]);
+  const { chosenType, setChosenType } = useChosenTypeContext();
 
   useEffect(() => {
-    (async () => {
-      setProjects(
-        await fetch("/api/types", {
+    if (projectsAlreadyFetched) {
+      setProjects(projectsAlreadyFetched);
+    } else {
+      (async () => {
+        const response = await fetch("/api/types", {
           method: "GET",
-        }).then((response) => response.json()),
-      );
-    })();
-  }, []);
+        });
+        setProjects(await response.json());
+      })();
+    }
+  }, [projectsAlreadyFetched]);
 
   return (
     <>
       {projects.map((project: Types) => (
-        <Link
-          className={styles.project}
+        <span
+          data-side-text
+          onClick={() => {
+            setChosenType(project.id);
+            router.push(`${lng}#projects`);
+          }}
           key={project.id}
-          href={`${lng}#projects?type=${project.nameEn}`}
+          className={styles.project}
         >
           {lng === "fr"
             ? project.nameFr
             : (lng === "en"
             ? project.nameEn
             : project.nameJp)}
-        </Link>
+        </span>
       ))}
     </>
   );

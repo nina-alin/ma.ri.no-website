@@ -1,4 +1,4 @@
-import SeePosts from "@/app/admin/components/see-posts";
+import SeePosts from "@/app/admin/components/see-posts/see-posts";
 import { prisma } from "@/lib/prisma";
 import { PostWithType } from "@/types/posts";
 

@@ -22,7 +22,7 @@ const languages = [
 ];
 const LangageDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  let reference = useRef(null);
+  const reference = useRef(null);
   const lng = useContext(LngContext);
 
   useEffect(() => {

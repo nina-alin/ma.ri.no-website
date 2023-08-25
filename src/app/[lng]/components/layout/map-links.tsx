@@ -25,6 +25,7 @@ const MapLinks = async ({ lng }: { lng: string }) => {
     <>
       {links.map((link) => (
         <Link
+          data-side-text
           className={styles[link.translation]}
           key={link.translation}
           href={`/${lng}/${link.href}`}

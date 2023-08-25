@@ -7,6 +7,7 @@ import localFont from "next/font/local";
 
 import Footer from "@/app/[lng]/components/layout/footer/footer";
 import Navbar from "@/app/[lng]/components/layout/navbar/navbar";
+import { LocomotiveScrollAppProvider } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
 
 import { languages } from "../i18n/settings";
 import styles from "./layout.module.css";
@@ -38,8 +39,10 @@ const akkurat = localFont({
 });
 export const metadata: Metadata = {
   title: "ma.ri.no",
-  description: "Graphic design portfolio of Déborah Marino. ma.ri.no is a graphic design studio based in Asahikawa, Japan.",
+  description:
+    "Graphic design portfolio of Déborah Marino. ma.ri.no is a graphic design studio based in Asahikawa, Japan.",
 };
+
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -55,11 +58,15 @@ const RootLayout = async ({
   return (
     <html lang={lng} dir={dir(lng)}>
       <body className={akkurat.className}>
-        <div className={styles.body} data-scroll-container>
-          <Navbar lng={lng} />
-          <main id={"scrollableDiv"}>{children}</main>
-          <Footer lng={lng} />
-        </div>
+        <LocomotiveScrollAppProvider>
+          <div data-scroll-container>
+            <div className={styles.body} data-scroll-section>
+              <Navbar lng={lng} />
+              <main id={"scrollableDiv"}>{children}</main>
+              <Footer lng={lng} />
+            </div>
+          </div>
+        </LocomotiveScrollAppProvider>
       </body>
     </html>
   );

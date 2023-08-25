@@ -3,6 +3,7 @@
 import ScrollTrigger, { gsap } from "gsap";
 import { useLayoutEffect, useRef } from "react";
 
+import ChosenTypeProvider from "@/app/[lng]/components/chosen-type/chosen-type-context";
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 
 const HomeClient = ({
@@ -13,6 +14,7 @@ const HomeClient = ({
   lng: string;
 }) => {
   const homeReference = useRef(null);
+
   gsap.registerPlugin(ScrollTrigger);
 
   useLayoutEffect(() => {
@@ -38,7 +40,9 @@ const HomeClient = ({
 
   return (
     <div ref={homeReference}>
-      <LngContext.Provider value={lng}>{children}</LngContext.Provider>
+      <ChosenTypeProvider>
+        <LngContext.Provider value={lng}>{children}</LngContext.Provider>
+      </ChosenTypeProvider>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Footer = async ({ lng }: { lng: string }) => {
   const { t } = await translate(lng);
 
   return (
-    <footer className={styles.footer} data-scroll-section>
+    <footer className={styles.footer}>
       <div className={styles.section}>
         <div className={styles.description}>
           <div className={styles.logo}>

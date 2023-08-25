@@ -216,20 +216,20 @@
     position: relative;
     display: inline-block;
     width: fit-content;
-    text-underline-offset: 0.6rem;
 }
 
 .underlineAnimation::after {
     content: "";
     position: absolute;
     width: 100%;
-    transform: scaleX(0);
+    transform: var(--hover-transform);
     height: 4px;
-    top: 5.2vh;
+    top: 3rem;
     left: 0;
     background-color: black;
-    transform-origin: bottom right;
+    transform-origin: var(----hover-transform-origin);
     transition: transform 0.25s ease-out;
+
 }
 
 .underlineAnimation:hover::after {
@@ -339,6 +339,10 @@
     .projectsBannerLinks {
         font-size: 1.5rem;
     }
+
+    .underlineAnimation::after {
+        top: 1.6rem;
+    }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 991px) {
@@ -414,6 +418,10 @@
     .projectsBannerLinks {
         font-size: 2rem;
     }
+
+    .underlineAnimation::after {
+        top: 1.9rem;
+    }
 }
 
 @media only screen and (max-width: 991px) {
@@ -475,5 +483,9 @@
 
     .projectsBannerLinks {
         font-size: 2rem;
+    }
+
+    .underlineAnimation::after {
+        top: 2rem;
     }
 }

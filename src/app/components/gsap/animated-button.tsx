@@ -1,12 +1,7 @@
 "use client";
 
 import gsap from "gsap";
-import {
-  HTMLAttributes,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react";
+import { HTMLAttributes, ReactNode, useEffect, useState } from "react";
 
 type AnimatedButtonProperties = {
   text: string;
@@ -16,6 +11,7 @@ type AnimatedButtonProperties = {
   onClick?: () => void;
   style?: React.CSSProperties;
   direction: string;
+  dataScroll?: boolean;
 };
 const AnimatedButton = ({
   text,
@@ -25,6 +21,7 @@ const AnimatedButton = ({
   onClick,
   style,
   direction,
+  dataScroll,
 }: AnimatedButtonProperties) => {
   const [isHover, setIsHover] = useState<boolean>(false);
 
@@ -52,6 +49,8 @@ const AnimatedButton = ({
       className={className}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
+      data-scroll={dataScroll}
+      data-scroll-speed={dataScroll ? "3" : undefined}
     >
       {direction === "right" ? (
         <>

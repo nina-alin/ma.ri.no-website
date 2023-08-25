@@ -1,4 +1,3 @@
-import ChangeLanguage from "@/app/[lng]/components/layout/navbar/change-language";
 import LangageDropdown from "@/app/[lng]/components/layout/navbar/langage-dropdown";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { translate } from "@/app/i18n";
