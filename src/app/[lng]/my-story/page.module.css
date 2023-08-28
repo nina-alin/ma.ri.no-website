@@ -1,0 +1,54 @@
+.page {
+    min-height: 80vh;
+}
+
+.imagesContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    width: 80vw;
+}
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.images:nth-child(1) {
+    gap: 2vw;
+}
+
+.images:nth-child(1) > .imageText:nth-child(2) {
+    margin-top: 20vh;
+}
+
+.images:nth-child(2) {
+    justify-content: space-between;
+}
+
+.imageText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+}
+
+.imageText > img {
+    width: auto;
+    height: 30vh;
+}
+
+.imageText > img:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 735px) {
+    .images:nth-child(1) > .imageText:nth-child(2) {
+        margin-top: 0;
+    }
+
+    .images {
+        justify-content: center !important;
+        align-items: center;
+    }
+}
