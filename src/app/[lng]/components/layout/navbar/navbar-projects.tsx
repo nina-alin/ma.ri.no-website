@@ -77,7 +77,7 @@ const NavbarProjects = () => {
             onMouseLeave={() => setIsOpen(false)}
             onMouseEnter={() => setIsOpen(true)}
           >
-            <MapProjects lng={lng} projectsAlreadyFetched={projects} />
+            <MapProjects projectsAlreadyFetched={projects} />
           </div>,
           document.body,
         )}

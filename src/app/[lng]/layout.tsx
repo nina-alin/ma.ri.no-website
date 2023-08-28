@@ -64,15 +64,15 @@ const RootLayout = async ({
       <body className={akkurat.className}>
         <LocomotiveScrollAppProvider>
           <TransitionProvider>
-            <div data-scroll-container>
-              <div className={styles.body} data-scroll-section>
-                <Navbar lng={lng} />
-                <TransitionHandler>
+            <TransitionHandler>
+              <div data-scroll-container>
+                <div className={styles.body} data-scroll-section>
+                  <Navbar lng={lng} />
                   <main id={"scrollableDiv"}>{children}</main>
-                </TransitionHandler>
-                <Footer lng={lng} />
+                  <Footer lng={lng} />
+                </div>
               </div>
-            </div>
+            </TransitionHandler>
           </TransitionProvider>
         </LocomotiveScrollAppProvider>
       </body>

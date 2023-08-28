@@ -24,7 +24,7 @@ const Footer = async ({ lng }: { lng: string }) => {
           <div className={styles.links}>
             <h4>{t("footer.menu")}</h4>
             <ul>
-              <MapLinks lng={lng} />
+              <MapLinks />
               <Link href={"/projects"}>
                 {t("footer.projects").toLowerCase()}
               </Link>
@@ -33,7 +33,7 @@ const Footer = async ({ lng }: { lng: string }) => {
           <div className={styles.links}>
             <h4>{t("footer.projects")}</h4>
             <ul>
-              <MapProjects lng={lng} />
+              <MapProjects />
             </ul>
           </div>
           <div className={styles.links}>

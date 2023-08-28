@@ -15,63 +15,47 @@ export default function TransitionHandler({
 }) {
   const elementReference = useRef(null);
   const firstLoadReference = useRef(true);
-  const pageTransitionReference = useRef(null);
   const router = useRouter();
-  const { url, setUrl } = useContext(TransitionContext);
+  const { url } = useContext(TransitionContext);
 
   useEffect(() => {
+    let animation = null as gsap.Context | null;
     if (!firstLoadReference.current) {
-      const element = elementReference.current;
-
-      // TODO: add transition
-      const onPageExit = (element: null) => {
-        router.prefetch(url);
-        gsap.set(element, { autoAlpha: 1, yPercent: 0 });
+      router.prefetch(url);
+      animation = gsap.context(() => {
         gsap
-          .timeline({
-            paused: true,
-            onComplete: () => onPageEnter(element, url),
+          .timeline({})
+          .to("#blacklayer", {
+            duration: 2,
+            ease: Power1.easeInOut,
+            css: { left: "200vw" },
           })
-          .to(pageTransitionReference, {
-            css: { right: 0 },
-          })
-          .play();
-      };
-
-      const onPageEnter = (element: null, url: string) => {
-        router.push(url);
-
-        /*
-                                                gsap
-                                                  .timeline({
-                                                    paused: true,
-                                                    onStart: () => router.push(url),
-                                                    delay: 0.5,
-                                                    defaults: {
-                                                      ease: Power1.easeOut,
-                                                      duration: 1,
-                                                    },
-                                                  })
-                                                  .to(element, {
-                                                    opacity: 0,
-                                                    xPercent: 0,
-                                                  })
-                                                  .play();
-                                              */
-      };
-
-      onPageExit(element);
+          .to(
+            "#whitelayer",
+            {
+              onStart: () => router.push(url),
+              duration: 2,
+              ease: Power1.easeInOut,
+              css: { left: "200vw" },
+            },
+            "-=1.5",
+          );
+      });
     }
     firstLoadReference.current = false;
+
+    return () => {
+      if (animation && !firstLoadReference.current && animation.revert) {
+        animation.revert();
+      }
+    };
   }, [router, url, firstLoadReference]);
 
   return (
-    <>
-      <div
-        ref={pageTransitionReference}
-        className={styles.pageTransition}
-      ></div>
-      <div ref={elementReference}>{children}</div>
-    </>
+    <div ref={elementReference}>
+      <div id={"blacklayer"} className={styles.blackLayer}></div>
+      <div id={"whitelayer"} className={styles.whiteLayer}></div>
+      <div>{children}</div>
+    </div>
   );
 }

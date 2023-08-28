@@ -21,7 +21,7 @@ const Navbar = async ({ lng }: NavbarProperties) => (
       data-scroll-speed="3"
       data-scroll-position="top"
     >
-      <MapLinks lng={lng} />
+      <MapLinks />
       <NavbarProjects />
     </div>
   </NavbarClient>

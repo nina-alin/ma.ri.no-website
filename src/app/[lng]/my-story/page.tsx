@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 import MyStoryImages from "@/app/[lng]/my-story/components/my-story-images";
 import { translate } from "@/app/i18n";
 
@@ -8,7 +10,7 @@ import lille from "../../../../public/lille.jpg";
 import styles from "./page.module.css";
 
 export type ImageProperties = {
-  src: string;
+  src: StaticImageData;
   alt: string;
   translation: string;
 };

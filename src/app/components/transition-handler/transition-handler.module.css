@@ -1,8 +1,23 @@
-.pageTransition {
-    position: fixed;
-    width: 100%;
+.blackLayer {
+    position: absolute;
+    width: 300%;
+    z-index: 999;
     height: 100%;
-    top: 0;
-    right: -100vw;
-    background-color: black;
+    top: auto;
+    left: -300%;
+    bottom: auto;
+    right: auto;
+    background: black;
+}
+
+.whiteLayer {
+    position: absolute;
+    width: 200%;
+    z-index: 1000;
+    height: 100%;
+    top: auto;
+    left: -200%;
+    bottom: auto;
+    right: auto;
+    background: white;
 }

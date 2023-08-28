@@ -47,7 +47,7 @@ const TypesClientProjectsLinks = ({
           );
         }}
       >
-        {t("home.all")}
+        {t("home.all").toLowerCase()}
       </span>
       {types.map((type) => (
         <span
