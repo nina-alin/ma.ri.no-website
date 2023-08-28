@@ -65,16 +65,18 @@
     font-size: 2rem;
 }
 
-.home:hover {
-    color: #b5d4a8;
+.menuLinks {
+    border: none;
+    background-color: transparent;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    text-align: left;
 }
 
-.about-me:hover {
+.menuLinks:hover {
     color: #b5d4a8;
-}
-
-.my-story:hover {
-    color: #b5d4a8;
+    cursor: pointer;
 }
 
 .projects-dropdown {

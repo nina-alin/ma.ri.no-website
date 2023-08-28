@@ -35,11 +35,11 @@ export const LocomotiveScrollAppProvider = ({
               smooth: true,
               class: "is-reveal",
               resetNativeScroll: true,
-              multiplier: 0.5,
+              multiplier: 0.4,
               mobile: {
                 breakpoint: 0,
                 smooth: true,
-                multiplier: 15,
+                multiplier: 0.4,
                 class: "is-reveal",
               },
               tablet: {
