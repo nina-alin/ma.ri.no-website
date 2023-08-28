@@ -10,7 +10,7 @@ const NavbarLinks = async ({ lng }: { lng: string }) => {
 
   return (
     <div className={styles.sidnavLinks}>
-      <MapLinks />
+      <MapLinks lng={lng} />
       <Link key={"projects"} href={`${lng}/projects`} data-side-text>
         {t(`navbar.links.projects`)}
       </Link>

@@ -52,7 +52,7 @@ const NavbarClient = ({
       <LngContext.Provider value={lng}>
         <div className={styles.sidnav} id={"burger-sidebar"}>
           <div className={styles.sidnavLinks}>
-            <MapLinks onClose={openMenu} />
+            <MapLinks onClose={openMenu} lng={lng} />
             <Link key={"projects"} href={`${lng}/projects`} data-side-text>
               {t(`navbar.links.projects`)}
             </Link>

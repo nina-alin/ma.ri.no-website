@@ -22,10 +22,9 @@ const links = [
   },
 ];
 
-const MapLinks = ({ onClose }: { onClose?: () => void }) => {
-  const lng = useContext(LngContext);
+const MapLinks = ({ lng, onClose }: { lng: string; onClose?: () => void }) => {
   const { t } = useTranslation(lng);
-  const { url, setUrl } = useContext(TransitionContext);
+  const { setUrl } = useContext(TransitionContext);
 
   const handleClick = (linkHref: string) => {
     if (onClose) {
