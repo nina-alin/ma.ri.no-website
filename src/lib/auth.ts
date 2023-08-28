@@ -21,17 +21,16 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
-        console.log("credentials", credentials);
+        const user = await prisma.admin.findUnique({
+          where: { username: credentials.username },
+        });
 
-        const user = await prisma.admin
-          .findUnique({
-            where: { username: credentials.username },
-          })
-
-        return user ? {
-            name: user.username,
-            password: user.password,
-          } : undefined;
+        return user
+          ? {
+              name: user.username,
+              password: user.password,
+            }
+          : undefined;
       },
     }),
   ],
