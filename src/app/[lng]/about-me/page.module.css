@@ -1,0 +1,457 @@
+.page {
+    min-height: 250vh;
+}
+
+.colorImages {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.image1 {
+    position: relative;
+    height: 90vh;
+    width: 50vw;
+}
+
+@keyframes moveImage1 {
+    from {
+        left: 15vw
+    }
+    to {
+        left: 14vw;
+    }
+}
+
+.color1 {
+    height: 80vh;
+    width: auto;
+    position: absolute;
+    top: 13vh;
+    left: 15vw;
+    z-index: 10;
+    animation: 2s ease-in-out 0s infinite alternate moveImage1;
+}
+
+
+@keyframes moveImage2 {
+    from {
+        right: 30vw
+    }
+    to {
+        right: 29vw;
+    }
+}
+
+.color2 {
+    height: 80vh;
+    width: auto;
+    position: absolute;
+    top: 30vh;
+    right: 30vw;
+    animation: 1.5s ease-in-out 0s infinite alternate moveImage2;
+}
+
+.titleEn {
+    position: absolute;
+    top: 8vh;
+    left: 10vw;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+    width: 15vw;
+    z-index: 20;
+}
+
+.titleFr {
+    position: absolute;
+    bottom: 20vh;
+    left: 15vw;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+    z-index: 20;
+    width: 20vw;
+}
+
+.titleJp {
+    position: absolute;
+    bottom: 30vh;
+    right: 0;
+    width: 15vw;
+    text-align: right;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+    z-index: 20;
+}
+
+.menThinking {
+    width: 60vw;
+    height: auto;
+    position: absolute;
+    top: 40vh;
+    left: 25vw;
+    z-index: 30;
+}
+
+.bubbles {
+    display: flex;
+    gap: 2vh;
+    position: absolute;
+    top: 153vh;
+    right: 28vw;
+}
+
+@keyframes bubbles1 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.bubble1 {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: 1vh;
+    animation: 4s ease-in-out 1.5s infinite alternate bubbles1;
+}
+
+@keyframes bubbles2 {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bubble2 {
+    width: 2rem;
+    height: 2rem;
+    animation: 4s ease-in-out 1s infinite alternate bubbles2;
+}
+
+@keyframes bubbles3 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bubble3 {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 1.5vh;
+    animation: 4s ease-in-out 0.5s infinite alternate bubbles3;
+}
+
+@keyframes bubbles4 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bubble4 {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 3vh;
+    animation: 4s ease-in-out 0s infinite alternate bubbles4;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    gap: 30vh;
+    margin-top: 25vh;
+}
+
+.text1 {
+    display: flex;
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+.text1 > p {
+    text-align: justify;
+    width: 20vw;
+}
+
+.text2 {
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.text2 > p {
+    text-align: justify;
+    width: 20vw;
+}
+
+@media only screen and (min-width: 1550px) and (max-width: 1700px) {
+    .bubbles {
+        top: 135vh
+    }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1550px) {
+    .bubbles {
+        top: 125vh;
+        right: 27vw;
+    }
+}
+
+@media only screen and (min-width: 1199px) and (max-width: 1400px) {
+    .bubbles {
+        top: 115vh;
+        right: 27vw;
+        gap: 1vh;
+    }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1199px) {
+    .titleEn {
+        font-size: 3rem;
+        left: 5vw;
+        width: 20vw;
+    }
+
+    .titleFr {
+        font-size: 3rem;
+        left: 5vw;
+        width: 20vw;
+    }
+
+    .titleJp {
+        font-size: 3rem;
+        right: 0;
+        width: 20vw;
+    }
+
+    .text {
+        gap: 5vh;
+    }
+
+    .menThinking {
+        top: 80vh;
+    }
+
+    .bubbles {
+        top: 142vh;
+        right: 27vw;
+        gap: 1vh;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 991px) {
+    .titleEn {
+        font-size: 2rem;
+        left: 5vw;
+        width: 20vw;
+        top: 15vh
+    }
+
+    .titleFr {
+        font-size: 2rem;
+        width: 20vw;
+        left: 0;
+        bottom: 10vh
+    }
+
+    .titleJp {
+        font-size: 2rem;
+        right: 0;
+        top: 35vh;
+        width: 20vw;
+    }
+
+    .color1 {
+        height: 60vh;
+        width: auto;
+        position: absolute;
+    }
+
+    .color2 {
+        height: 60vh;
+        width: auto;
+        position: absolute;
+    }
+
+    .text {
+        gap: 2vh;
+        margin-top: 75vh;
+    }
+
+    .text1 > p {
+        width: 50vw;
+    }
+
+    .text2 > p {
+        width: 50vw;
+    }
+
+    .bubbles {
+        top: 90vh;
+        right: 27vw;
+        gap: 0.5rem;
+    }
+
+    .bubble1 {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .bubble2 {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .bubble3 {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    .bubble4 {
+        width: 0.4rem;
+        height: 0.4rem;
+    }
+
+}
+
+@media only screen and (min-width: 752px) and (max-width: 881px) {
+    .bubbles {
+        top: 85vh;
+    }
+
+}
+
+@media only screen and (min-width: 674px) and (max-width: 752px) {
+    .bubbles {
+        top: 80vh;
+    }
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 674px) {
+    .bubbles {
+        top: 75vh;
+        z-index: 30;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .page {
+        min-height: 200vh;
+    }
+
+    .titleEn {
+        font-size: 1rem;
+        left: 5vw;
+        width: 20vw;
+        top: 15vh
+    }
+
+    .titleFr {
+        font-size: 1rem;
+        width: 20vw;
+        left: 0;
+        bottom: 40vh
+    }
+
+    .titleJp {
+        font-size: 1rem;
+        left: 50vw;
+        top: 35vh;
+        width: 20vw;
+    }
+
+    .color1 {
+        height: 40vh;
+        width: auto;
+    }
+
+    .color2 {
+        height: 40vh;
+        width: auto;
+    }
+
+    .text {
+        gap: 2vh;
+        margin-top: 55vh;
+    }
+
+    .text1 > p {
+        font-size: 1rem;
+        width: 50vw;
+    }
+
+    .text2 > p {
+        font-size: 1rem;
+        width: 50vw;
+    }
+
+    .bubbles {
+        top: 72vh;
+        right: 27vw;
+        gap: 0.5rem;
+    }
+
+    .bubble1 {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    .bubble2 {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+
+    .bubble3 {
+        width: 0.4rem;
+        height: 0.4rem;
+    }
+
+    .bubble4 {
+        width: 0.4rem;
+        height: 0.4rem;
+    }
+}
+
+@media only screen and (max-width: 544px) {
+    .bubbles {
+        top: 68vh;
+    }
+}
+
+@media only screen and (max-width: 487px) {
+    .bubbles {
+        top: 63vh;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .bubbles {
+        top: 60vh;
+        right: 25vw;
+    }
+}

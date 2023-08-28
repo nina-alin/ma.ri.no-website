@@ -2,8 +2,6 @@ import { Alert } from "@prisma/client";
 import Image from "next/image";
 
 import AboutMeSection from "@/app/[lng]/components/about-me-section";
-import DiscoverMyStoryButton from "@/app/[lng]/components/buttons/discover-my-story-button";
-import MoreButton from "@/app/[lng]/components/buttons/more-button";
 import HomeClient from "@/app/[lng]/components/home-client";
 import MyStorySection from "@/app/[lng]/components/my-story-section";
 import TypesClient from "@/app/[lng]/components/projects-section/types/types-client";
@@ -12,7 +10,6 @@ import { translate } from "@/app/i18n";
 import { prisma } from "@/lib/prisma";
 
 import logoBackground from "../../../public/logoBackground.jpg";
-import placeholder from "../../../public/placeholder.png";
 import styles from "./page.module.css";
 
 interface Home {
