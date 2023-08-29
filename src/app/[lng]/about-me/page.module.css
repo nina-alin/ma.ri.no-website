@@ -16,11 +16,25 @@
 }
 
 @keyframes moveImage1 {
-    from {
+    0% {
+        top: 13vh;
         left: 15vw
     }
-    to {
-        left: 14vw;
+    25% {
+        top: 14vh;
+        left: 15vw;
+    }
+    50% {
+        top: 13vh;
+        left: 14vw
+    }
+    75% {
+        top: 14vh;
+        left: 14vw
+    }
+    100% {
+        top: 13vh;
+        left: 15vw;
     }
 }
 
@@ -29,18 +43,33 @@
     width: auto;
     position: absolute;
     top: 13vh;
+    opacity: 0;
     left: 15vw;
     z-index: 10;
-    animation: 2s ease-in-out 0s infinite alternate moveImage1;
+    animation: 10s ease-in-out 0s infinite alternate moveImage1;
 }
 
 
 @keyframes moveImage2 {
-    from {
-        right: 30vw
+    0% {
+        right: 30vw;
+        top: 30vh;
     }
-    to {
+    25% {
         right: 29vw;
+        top: 30vh;
+    }
+    50% {
+        right: 29vw;
+        top: 29vh;
+    }
+    75% {
+        right: 29vw;
+        top: 30vh;
+    }
+    100% {
+        right: 30vw;
+        top: 30vh;
     }
 }
 
@@ -50,7 +79,8 @@
     position: absolute;
     top: 30vh;
     right: 30vw;
-    animation: 1.5s ease-in-out 0s infinite alternate moveImage2;
+    opacity: 0;
+    animation: 10s ease-in-out 0s infinite alternate moveImage2;
 }
 
 .titleEn {

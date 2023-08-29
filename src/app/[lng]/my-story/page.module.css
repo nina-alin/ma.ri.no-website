@@ -38,10 +38,6 @@
     height: 30vh;
 }
 
-.imageText > img:hover {
-    cursor: pointer;
-}
-
 @media only screen and (max-width: 735px) {
     .images:nth-child(1) > .imageText:nth-child(2) {
         margin-top: 0;

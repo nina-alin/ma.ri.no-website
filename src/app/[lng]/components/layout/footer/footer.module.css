@@ -12,13 +12,11 @@
 
 .footer button:hover {
     font-weight: bold;
-    cursor: pointer;
     color: black !important;
 }
 
 .footer a:hover {
     font-weight: bold;
-    cursor: pointer;
     color: black !important;
 }
 
@@ -102,7 +100,6 @@
 }
 
 .socials > svg:hover {
-    cursor: pointer;
     stroke: black;
 }
 

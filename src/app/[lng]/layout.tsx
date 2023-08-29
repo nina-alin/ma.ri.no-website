@@ -9,6 +9,7 @@ import React from "react";
 import Footer from "@/app/[lng]/components/layout/footer/footer";
 import Navbar from "@/app/[lng]/components/layout/navbar/navbar";
 import { LocomotiveScrollAppProvider } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
+import DotRing from "@/app/components/mouse/dot-ring";
 import TransitionHandler from "@/app/components/transition-handler/transition-handler";
 import TransitionProvider from "@/app/components/transition-handler/transition-provider";
 
@@ -63,6 +64,7 @@ const RootLayout = async ({
   return (
     <html lang={lng} dir={dir(lng)}>
       <body className={akkurat.className}>
+        <DotRing />
         <LocomotiveScrollAppProvider>
           <TransitionProvider>
             <TransitionHandler>

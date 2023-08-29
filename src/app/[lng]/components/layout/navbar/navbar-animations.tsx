@@ -105,7 +105,14 @@ const NavbarAnimations = ({
 
   return (
     <div className={styles.navContainer} ref={navReference}>
-      <button id={"hamburger"} className={styles.hamburger} onClick={openMenu}>
+      <button
+        id={"hamburger"}
+        className={styles.hamburger}
+        onClick={openMenu}
+        data-scroll
+        data-scroll-speed="3"
+        data-scroll-position="top"
+      >
         <span
           data-burger
           id={"burger-top"}

@@ -119,12 +119,11 @@
 .more:hover {
     border: 2px solid #8dc6b5;
     color: #8dc6b5;
-    cursor: pointer;
 }
 
 .more:hover > svg {
     fill: #8dc6b5;
-    stroke: #8dc6b5;
+    stroke: #8dc6b5
 }
 
 .myStory {
@@ -177,7 +176,6 @@
 .discover:hover {
     border: 2px solid #e0dd6a;
     color: #e0dd6a;
-    cursor: pointer;
 }
 
 .discover:hover > svg {
@@ -235,10 +233,6 @@
 .underlineAnimation:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-}
-
-.underlineAnimation:hover {
-    cursor: pointer;
 }
 
 .projectsGallery {

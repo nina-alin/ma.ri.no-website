@@ -76,7 +76,6 @@
 
 .menuLinks:hover {
     color: #b5d4a8;
-    cursor: pointer;
 }
 
 .projects-dropdown {
@@ -94,7 +93,6 @@
 
 .projects:hover {
     color: #b5d4a8;
-    cursor: pointer;
 }
 
 .projects:has(+ .subprojects:hover) {
@@ -139,18 +137,10 @@
     transform: scaleX(1);
 }
 
-.subprojects > span:hover {
-    cursor: pointer;
-}
-
 .hamburger {
     display: none;
     border: none;
     background: none;
-}
-
-.hamburger:hover {
-    cursor: pointer;
 }
 
 .buttons {
@@ -170,7 +160,6 @@
 }
 
 .contact:hover {
-    cursor: pointer;
     color: #ddadb4;
     border-color: #ddadb4;
 }
@@ -184,7 +173,6 @@
 }
 
 .language:hover {
-    cursor: pointer;
     color: #ddadb4;
 }
 

@@ -35,7 +35,8 @@ const MyStorySection = ({ t }: { t: TFunction }) => {
           data-scroll-delay="0.2"
         >
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euis
+          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
         </p>
         <div>
           <DiscoverMyStoryButton />
