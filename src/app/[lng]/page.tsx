@@ -1,5 +1,6 @@
 import { Alert } from "@prisma/client";
 import Image from "next/image";
+import React from "react";
 
 import AboutMeSection from "@/app/[lng]/components/about-me-section";
 import HomeClient from "@/app/[lng]/components/home-client";
@@ -12,10 +13,11 @@ import { prisma } from "@/lib/prisma";
 import logoBackground from "../../../public/logoBackground.jpg";
 import styles from "./page.module.css";
 
-interface Home {
+interface HomeProperties {
   params: {
     lng: string;
   };
+  searchParams: { [projects: string]: string | undefined };
 }
 
 const getAlert = async () => {
@@ -26,14 +28,17 @@ const getTypes = async () => {
   return prisma.types.findMany();
 };
 
-const Home = async ({ params: { lng } }: Home) => {
+const Home = async ({
+  params: { lng },
+  searchParams: { projects },
+}: HomeProperties) => {
   const { t } = await translate(lng);
 
   const types = await getTypes();
   const alert = (await getAlert()) as Alert;
 
   return (
-    <HomeClient lng={lng}>
+    <HomeClient lng={lng} projects={projects}>
       <div className={styles.main}>
         {alert.status === "enabled" && (
           <div className={styles.alert}>

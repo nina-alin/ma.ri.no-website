@@ -1,9 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useContext } from "react";
-
-import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import React from "react";
 
 import styles from "./change-language.module.css";
 

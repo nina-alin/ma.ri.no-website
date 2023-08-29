@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 
 import bubble1 from "../../../../public/bubble-1.png";
 import bubble2 from "../../../../public/bubble-2.png";
@@ -9,13 +10,7 @@ import color2 from "../../../../public/color-2.png";
 import menThinking from "../../../../public/men-thinking.png";
 import styles from "./page.module.css";
 
-interface AboutMeProperties {
-  params: {
-    lng: string;
-  };
-}
-
-const AboutMe = async ({ params: { lng } }: AboutMeProperties) => {
+const AboutMe = async () => {
   return (
     <div className={styles.page}>
       <div>

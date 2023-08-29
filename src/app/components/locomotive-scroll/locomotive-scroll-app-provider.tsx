@@ -1,7 +1,7 @@
 "use client";
 
 import LocomotiveScroll from "locomotive-scroll";
-import { createContext, ReactNode, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 
 export const SmoothScrollContext = createContext<{
   scroll: LocomotiveScroll | null;

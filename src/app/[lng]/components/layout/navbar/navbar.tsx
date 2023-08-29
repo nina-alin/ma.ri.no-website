@@ -1,3 +1,5 @@
+import React from "react";
+
 import MapLinks from "@/app/[lng]/components/layout/map-links";
 import NavbarClient from "@/app/[lng]/components/layout/navbar/navbar-client";
 import NavbarLinks from "@/app/[lng]/components/layout/navbar/navbar-links";

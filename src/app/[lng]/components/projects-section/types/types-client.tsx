@@ -1,22 +1,22 @@
 "use client";
 
 import { Types } from "@prisma/client";
-import { useContext, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useContext, useEffect, useState } from "react";
 
-import { useChosenTypeContext } from "@/app/[lng]/components/chosen-type/chosen-type-context";
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import ImageFromGallery from "@/app/[lng]/components/projects-section/project-modal/image-from-gallery";
 import TypesClientProjectsLinks from "@/app/[lng]/components/projects-section/types/types-client-projects-links";
 import styles from "@/app/[lng]/page.module.css";
 import { useTranslation } from "@/app/i18n/client";
 import { PostWithType } from "@/types/posts";
+import getSearchParameters from "@/utils/get-search-parameters";
 
 interface TypesClientProperties {
   types: Types[];
 }
 
 const TypesClient = ({ types }: TypesClientProperties) => {
-  const { chosenType, setChosenType } = useChosenTypeContext();
   const lng = useContext(LngContext);
 
   const { t } = useTranslation(lng);
@@ -24,6 +24,9 @@ const TypesClient = ({ types }: TypesClientProperties) => {
   const [posts, setPosts] = useState<PostWithType[]>([]);
   const [numberOfPosts, setNumberOfPosts] = useState<number>(6);
   const [maxNumberOfPosts, setMaxNumberOfPosts] = useState<number>(0);
+
+  const searchParameters = useSearchParams();
+  const chosenType = getSearchParameters(searchParameters);
 
   useEffect(() => {
     (async () => {
@@ -36,13 +39,15 @@ const TypesClient = ({ types }: TypesClientProperties) => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`/api/posts?take=${numberOfPosts}`);
-      setPosts(await response.json());
+      if (chosenType === "all" || !chosenType) {
+        const response = await fetch(`/api/posts?take=${numberOfPosts}`);
+        setPosts(await response.json());
+      }
     })();
-  }, [numberOfPosts]);
+  }, [chosenType, numberOfPosts]);
 
   useEffect(() => {
-    if (chosenType !== "all") {
+    if (chosenType !== "all" && chosenType) {
       (async () => {
         setPosts(
           await fetch(
@@ -74,11 +79,9 @@ const TypesClient = ({ types }: TypesClientProperties) => {
           {t("home.projects-gallery")}
         </h2>
         <TypesClientProjectsLinks
-          setChosenType={setChosenType}
           setNumberOfPosts={setNumberOfPosts}
           setPosts={setPosts}
           types={types}
-          chosenType={chosenType}
         />
       </div>
       <div className={styles.projectsGallery}>

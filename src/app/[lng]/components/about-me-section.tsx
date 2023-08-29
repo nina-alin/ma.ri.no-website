@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 
 import MoreButton from "@/app/[lng]/components/buttons/more-button";
 import styles from "@/app/[lng]/page.module.css";

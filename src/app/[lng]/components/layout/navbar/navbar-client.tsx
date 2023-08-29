@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 
 import MapLinks from "@/app/[lng]/components/layout/map-links";
 import MapProjects from "@/app/[lng]/components/layout/map-projects";

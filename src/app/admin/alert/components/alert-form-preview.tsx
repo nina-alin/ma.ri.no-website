@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { AlertWithoutId } from "@/app/admin/alert/components/alert-form";
 import styles from "@/app/admin/alert/components/alert-form.module.css";

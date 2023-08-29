@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import React, { SVGProps } from "react";
 
 const PenIcon = ({ properties }: { properties?: SVGProps<SVGSVGElement> }) => {
   return (

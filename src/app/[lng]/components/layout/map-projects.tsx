@@ -1,24 +1,36 @@
 "use client";
 
 import { Types } from "@prisma/client";
-import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useContext, useEffect, useState } from "react";
 
-import { useChosenTypeContext } from "@/app/[lng]/components/chosen-type/chosen-type-context";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import { SmoothScrollContext } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
+import { TransitionContext } from "@/app/components/transition-handler/transition-provider";
 
 const MapProjects = ({
   projectsAlreadyFetched,
 }: {
   projectsAlreadyFetched?: Types[];
 }) => {
+  const pathname = usePathname();
   const router = useRouter();
 
   const lng = useContext(LngContext);
-  const { chosenType, setChosenType } = useChosenTypeContext();
+  const { setUrl } = useContext(TransitionContext);
+  const { scroll } = useContext(SmoothScrollContext);
 
   const [projects, setProjects] = useState<Types[]>([]);
+
+  const handleClick = (projectId: string) => {
+    if (pathname === `/${lng}` && scroll) {
+      router.push(`${pathname}?projects=${projectId}`);
+      scroll.scrollTo(document.querySelector("#projects") as HTMLElement);
+    } else {
+      setUrl(`/${lng}?projects=${projectId}`);
+    }
+  };
 
   useEffect(() => {
     if (projectsAlreadyFetched) {
@@ -38,10 +50,7 @@ const MapProjects = ({
       {projects.map((project: Types) => (
         <span
           data-side-text
-          onClick={() => {
-            setChosenType(project.id);
-            router.push(`${lng}#projects`);
-          }}
+          onClick={() => handleClick(project.id)}
           key={project.id}
           className={styles.project}
         >

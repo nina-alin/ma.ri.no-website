@@ -2,7 +2,7 @@
 
 import { gsap, Power1 } from "gsap";
 import { useRouter } from "next/navigation";
-import { ReactNode, useContext, useEffect, useRef } from "react";
+import React, { ReactNode, useContext, useEffect, useRef } from "react";
 
 import { TransitionContext } from "@/app/components/transition-handler/transition-provider";
 
@@ -15,7 +15,9 @@ export default function TransitionHandler({
 }) {
   const elementReference = useRef(null);
   const firstLoadReference = useRef(true);
+
   const router = useRouter();
+
   const { url } = useContext(TransitionContext);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function TransitionHandler({
       router.prefetch(url);
       animation = gsap.context(() => {
         gsap
-          .timeline({})
+          .timeline()
           .to("#blacklayer", {
             duration: 2,
             ease: Power1.easeInOut,

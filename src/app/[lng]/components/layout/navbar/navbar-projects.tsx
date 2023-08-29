@@ -1,17 +1,24 @@
 "use client";
 
 import { Types } from "@prisma/client";
-import Link from "next/link";
-import { useContext, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import MapProjects from "@/app/[lng]/components/layout/map-projects";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import { SmoothScrollContext } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
+import { TransitionContext } from "@/app/components/transition-handler/transition-provider";
 import { useTranslation } from "@/app/i18n/client";
 
 const NavbarProjects = () => {
+  const pathname = usePathname();
+
   const lng = useContext(LngContext);
+  const { setUrl } = useContext(TransitionContext);
+  const { scroll } = useContext(SmoothScrollContext);
+
   const { t } = useTranslation(lng);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -20,6 +27,14 @@ const NavbarProjects = () => {
     null,
   );
   const [projects, setProjects] = useState<Types[]>([]);
+
+  const handleClick = () => {
+    if (pathname === `/${lng}` && scroll) {
+      scroll.scrollTo(document.querySelector("#projects") as HTMLElement);
+    } else {
+      setUrl(`/${lng}?projects=all`);
+    }
+  };
 
   useEffect(() => {
     setProjectsDropdown(document.querySelector("#subprojects") as HTMLElement);
@@ -58,15 +73,15 @@ const NavbarProjects = () => {
 
   return (
     <div className={"projects-dropdown"} onMouseEnter={() => setIsOpen(true)}>
-      <Link
+      <button
         className={styles.projects}
         key={"projects"}
-        href={`#projects`}
+        onClick={handleClick}
         data-scroll-to
         id={"projectsNavbar"}
       >
         {t(`navbar.links.projects`)}
-      </Link>
+      </button>
       {isOpen &&
         // correct a bug where the dropdown would be hidden because of Locomotive Scroll
         createPortal(

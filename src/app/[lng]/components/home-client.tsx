@@ -1,21 +1,22 @@
 "use client";
 
-import ScrollTrigger, { gsap } from "gsap";
-import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import React, { useContext, useEffect, useLayoutEffect, useRef } from "react";
 
-import ChosenTypeProvider from "@/app/[lng]/components/chosen-type/chosen-type-context";
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import { SmoothScrollContext } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
 
 const HomeClient = ({
   children,
   lng,
+  projects,
 }: {
   children: React.ReactNode;
   lng: string;
+  projects: string | undefined;
 }) => {
+  const { scroll } = useContext(SmoothScrollContext);
   const homeReference = useRef(null);
-
-  gsap.registerPlugin(ScrollTrigger);
 
   useLayoutEffect(() => {
     const animation = gsap.context(() => {
@@ -38,11 +39,15 @@ const HomeClient = ({
     return () => animation.revert();
   }, []);
 
+  useEffect(() => {
+    if (scroll && projects !== undefined) {
+      scroll.scrollTo(document.querySelector("#projects") as HTMLElement);
+    }
+  }, [scroll, projects]);
+
   return (
     <div ref={homeReference}>
-      <ChosenTypeProvider>
-        <LngContext.Provider value={lng}>{children}</LngContext.Provider>
-      </ChosenTypeProvider>
+      <LngContext.Provider value={lng}>{children}</LngContext.Provider>
     </div>
   );
 };

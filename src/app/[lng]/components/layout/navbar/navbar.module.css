@@ -84,8 +84,17 @@
     display: inline-block;
 }
 
+.projects {
+    border: none;
+    background-color: transparent;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+}
+
 .projects:hover {
     color: #b5d4a8;
+    cursor: pointer;
 }
 
 .projects:has(+ .subprojects:hover) {

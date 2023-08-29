@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import styles from "@/app/admin/posts/components/add-post-form.module.css";
 
 interface TitlesPostProperties {
@@ -8,6 +10,7 @@ interface TitlesPostProperties {
     titleFr: string;
     titleJp: string;
   };
+  // eslint-disable-next-line no-unused-vars
   updateForm: (event: any, key: string) => void;
 }
 

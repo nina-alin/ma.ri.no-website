@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 import styles from "@/app/[lng]/components/projects-section/project-modal/image-from-gallery.module.css";
 import { PostWithType } from "@/types/posts";

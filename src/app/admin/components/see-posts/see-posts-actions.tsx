@@ -1,15 +1,15 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
-import { Snackbar } from "@/app/admin/components/see-posts/see-posts";
+import { SnackbarT } from "@/app/admin/components/see-posts/see-posts";
 import styles from "@/app/admin/components/see-posts/see-posts.module.css";
 import DeleteIcon from "@/app/admin/components/svg/delete-icon";
 import PenIcon from "@/app/admin/components/svg/pen-icon";
 
 interface SeePostsActionsProperties {
-  setShowSnackbar: Dispatch<SetStateAction<Snackbar>>;
+  setShowSnackbar: Dispatch<SetStateAction<SnackbarT>>;
   postId: string;
 }
 

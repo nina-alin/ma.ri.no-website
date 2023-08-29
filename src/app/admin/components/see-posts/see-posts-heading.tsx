@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import { Language } from "@/app/admin/components/see-posts/see-posts";
 import styles from "@/app/admin/components/see-posts/see-posts.module.css";

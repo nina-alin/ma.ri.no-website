@@ -1,7 +1,7 @@
 "use client";
 
 import { gsap, Power1, Power2 } from "gsap";
-import { ReactNode, useEffect, useLayoutEffect, useRef } from "react";
+import React, { ReactNode, useEffect, useLayoutEffect, useRef } from "react";
 
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 
@@ -17,7 +17,7 @@ const NavbarAnimations = ({
   reversed: boolean;
 }) => {
   const navReference = useRef<HTMLDivElement>(null);
-  const tl = useRef<GSAPTimeline>();
+  const tl = useRef<gsap.core.Timeline>();
 
   // navbar fade in
   useLayoutEffect(() => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import ChangeLanguage from "@/app/[lng]/components/layout/navbar/change-language";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";

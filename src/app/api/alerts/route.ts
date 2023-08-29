@@ -9,6 +9,7 @@ export async function GET() {
 
 export async function PUT(request: Request) {
   const body = await request.json();
+  // eslint-disable-next-line no-unused-vars
   const { id, ...data } = body;
 
   const banner = await prisma.alert.update({

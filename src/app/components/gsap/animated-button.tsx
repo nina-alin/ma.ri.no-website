@@ -1,7 +1,7 @@
 "use client";
 
 import gsap from "gsap";
-import { HTMLAttributes, ReactNode, useEffect, useState } from "react";
+import React, { HTMLAttributes, ReactNode, useEffect, useState } from "react";
 
 type AnimatedButtonProperties = {
   text: string;

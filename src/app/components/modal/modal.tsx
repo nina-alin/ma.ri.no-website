@@ -1,7 +1,8 @@
+import React, { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 interface ModalProperties {
-  children: React.ReactNode;
+  children: ReactNode;
   open: boolean;
 }
 

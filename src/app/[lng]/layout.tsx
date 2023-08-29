@@ -4,6 +4,7 @@ import "./locomotive-scroll.css";
 import { dir } from "i18next";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import React from "react";
 
 import Footer from "@/app/[lng]/components/layout/footer/footer";
 import Navbar from "@/app/[lng]/components/layout/navbar/navbar";

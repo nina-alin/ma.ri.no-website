@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import ImageModal from "@/app/[lng]/components/projects-section/project-modal/image-modal";

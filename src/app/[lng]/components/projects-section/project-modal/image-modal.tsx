@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import styles from "@/app/[lng]/components/projects-section/project-modal/image-from-gallery.module.css";

@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+import React from "react";
 
 import styles from "./navbar.module.css";
 

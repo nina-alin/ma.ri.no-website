@@ -1,3 +1,5 @@
+import React from "react";
+
 import LangageDropdown from "@/app/[lng]/components/layout/navbar/langage-dropdown";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { translate } from "@/app/i18n";

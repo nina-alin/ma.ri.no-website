@@ -1,5 +1,5 @@
 import { Types } from "@prisma/client";
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 // not typed so Typescript throws an error
 // TODO: add a d.ts file for this package
 // @ts-ignore
@@ -11,6 +11,7 @@ import { PostWithoutOrderAndWithoutId } from "@/types/posts";
 interface DisplayPostProperties {
   setForm: Dispatch<SetStateAction<PostWithoutOrderAndWithoutId>>;
   form: PostWithoutOrderAndWithoutId;
+  // eslint-disable-next-line no-unused-vars
   updateForm: (event: any, key: string) => void;
   types: Types[];
 }

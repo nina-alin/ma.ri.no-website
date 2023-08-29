@@ -1,5 +1,6 @@
 import { TFunction } from "i18next";
 import Image from "next/image";
+import React from "react";
 
 import DiscoverMyStoryButton from "@/app/[lng]/components/buttons/discover-my-story-button";
 import styles from "@/app/[lng]/page.module.css";

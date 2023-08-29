@@ -1,4 +1,5 @@
 import { Alert } from "@prisma/client";
+import React from "react";
 
 import AlertForm from "@/app/admin/alert/components/alert-form";
 import { prisma } from "@/lib/prisma";

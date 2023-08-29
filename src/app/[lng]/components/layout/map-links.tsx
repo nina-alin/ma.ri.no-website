@@ -1,9 +1,8 @@
 "use client";
 
-import { useContext } from "react";
+import React, { useContext } from "react";
 
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
-import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import { TransitionContext } from "@/app/components/transition-handler/transition-provider";
 import { useTranslation } from "@/app/i18n/client";
 

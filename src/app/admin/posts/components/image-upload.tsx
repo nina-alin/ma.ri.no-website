@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 
 import { PostWithoutOrderAndWithoutId } from "@/types/posts";
 
@@ -12,14 +12,13 @@ const parseImageUrl = (url: string) => {
   return `https://drive.google.com/uc?id=${id}`;
 };
 
-
 interface Properties {
   form: PostWithoutOrderAndWithoutId;
   setForm: Dispatch<SetStateAction<PostWithoutOrderAndWithoutId>>;
 }
+
 const ImageUpload = ({ setForm, form }: Properties) => {
   const [fileNumber, setFileNumber] = useState(form.imagesUrl.length ?? 0);
-
 
   const updateStateAtIndex = (
     event: ChangeEvent<HTMLInputElement>,
@@ -67,8 +66,8 @@ const ImageUpload = ({ setForm, form }: Properties) => {
           />
         </div>
         <div className={styles.imagesUrl}>
-          { /* @ts-ignore */}
-          {[...Array.from({length: fileNumber}).keys()].map((index) => (
+          {/* @ts-ignore */}
+          {[...Array.from({ length: fileNumber }).keys()].map((index) => (
             <div key={index} className={styles.imageContainer}>
               {form.imagesUrl[index] && (
                 <img

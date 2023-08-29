@@ -2,12 +2,7 @@
 
 import { Types } from "@prisma/client";
 import { usePathname, useRouter } from "next/navigation";
-import {
-  ChangeEvent,
-  MouseEventHandler,
-  SyntheticEvent,
-  useState,
-} from "react";
+import React, { ChangeEvent, SyntheticEvent, useState } from "react";
 import { createPortal } from "react-dom";
 
 import Snackbar from "@/app/admin/components/snackbar/snackbar";

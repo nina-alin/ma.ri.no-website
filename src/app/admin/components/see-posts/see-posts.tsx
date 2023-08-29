@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 
 import SeePostsActions from "@/app/admin/components/see-posts/see-posts-actions";
@@ -13,7 +13,7 @@ import { PostWithType } from "@/types/posts";
 import styles from "./see-posts.module.css";
 
 export type Language = "fr" | "en" | "ja";
-export type Snackbar = {
+export type SnackbarT = {
   toggle: boolean;
   msg: string;
   color: string;
@@ -26,7 +26,7 @@ interface SeePostsProperties {
 const SeePosts = ({ posts }: SeePostsProperties) => {
   const [langTitle, setLangTitle] = useState<Language>("fr");
   const [langContent, setLangContent] = useState<Language>("fr");
-  const [showSnackbar, setShowSnackbar] = useState<Snackbar>({
+  const [showSnackbar, setShowSnackbar] = useState<SnackbarT>({
     toggle: false,
     msg: "",
     color: "",

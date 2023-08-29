@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 
 import MapLinks from "@/app/[lng]/components/layout/map-links";
 import MapProjects from "@/app/[lng]/components/layout/map-projects";

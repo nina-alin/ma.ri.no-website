@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { ImageProperties } from "@/app/[lng]/my-story/page";
 import Modal from "@/app/components/modal/modal";

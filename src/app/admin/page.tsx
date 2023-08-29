@@ -1,3 +1,5 @@
+import React from "react";
+
 import SeePosts from "@/app/admin/components/see-posts/see-posts";
 import { prisma } from "@/lib/prisma";
 import { PostWithType } from "@/types/posts";

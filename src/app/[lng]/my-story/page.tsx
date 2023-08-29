@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import React from "react";
 
 import MyStoryImages from "@/app/[lng]/my-story/components/my-story-images";
 import { translate } from "@/app/i18n";

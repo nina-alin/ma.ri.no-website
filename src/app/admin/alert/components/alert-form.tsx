@@ -2,7 +2,7 @@
 
 import { Alert } from "@prisma/client";
 import { useRouter } from "next/navigation";
-import { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { createPortal } from "react-dom";
 
 import AlertFormPreview from "@/app/admin/alert/components/alert-form-preview";

@@ -1,3 +1,5 @@
+import React from "react";
+
 import AddPostForm from "@/app/admin/posts/components/add-post-form";
 import { prisma } from "@/lib/prisma";
 

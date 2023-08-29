@@ -1,8 +1,11 @@
+import React from "react";
+
 import { AlertWithoutId } from "@/app/admin/alert/components/alert-form";
 import styles from "@/app/admin/alert/components/alert-form.module.css";
 
 interface AlertFormTitlesProperties {
   form: AlertWithoutId;
+  // eslint-disable-next-line no-unused-vars
   updateForm: (event: any, key: string) => void;
 }
 

@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
-import { Snackbar } from "@/app/admin/components/see-posts/see-posts";
+import { SnackbarT } from "@/app/admin/components/see-posts/see-posts";
 import styles from "@/app/admin/components/see-posts/see-posts.module.css";
 import ArrowDown from "@/app/admin/components/svg/arrow-down";
 import ArrowUp from "@/app/admin/components/svg/arrow-up";
@@ -12,7 +12,7 @@ import { PostWithType } from "@/types/posts";
 interface SeePostsOrderProperties {
   posts: PostWithType[];
   post: PostWithType;
-  setShowSnackbar: Dispatch<SetStateAction<Snackbar>>;
+  setShowSnackbar: Dispatch<SetStateAction<SnackbarT>>;
 }
 
 const SeePostsOrder = ({
@@ -22,6 +22,7 @@ const SeePostsOrder = ({
 }: SeePostsOrderProperties) => {
   const router = useRouter();
   const onChangeOrder = (order: number, post: PostWithType) => {
+    // eslint-disable-next-line no-unused-vars
     const { type, ...postWithoutType } = post;
     fetch(`/api/posts/order/${post.id}`, {
       method: "PUT",
