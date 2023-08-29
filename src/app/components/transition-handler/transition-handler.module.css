@@ -8,6 +8,7 @@
     bottom: auto;
     right: auto;
     background: black;
+    overflow: hidden;
 }
 
 .whiteLayer {
@@ -20,4 +21,5 @@
     bottom: auto;
     right: auto;
     background: white;
+    overflow: hidden;
 }

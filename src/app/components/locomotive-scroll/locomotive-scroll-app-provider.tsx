@@ -32,20 +32,15 @@ export const LocomotiveScrollAppProvider = ({
               el: (document.querySelector("[data-scroll-container]") ??
                 undefined) as HTMLElement,
               smooth: true,
-              class: "is-reveal",
               resetNativeScroll: true,
               multiplier: 0.4,
-              mobile: {
-                breakpoint: 0,
+              touchMultiplier: 5,
+              smartphone: {
                 smooth: true,
-                multiplier: 0.4,
-                class: "is-reveal",
               },
               tablet: {
                 breakpoint: 0,
                 smooth: true,
-                // @ts-ignore
-                class: "is-reveal",
               },
             }),
           );

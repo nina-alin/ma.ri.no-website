@@ -225,7 +225,7 @@
     .hamburger {
         display: block;
         position: absolute;
-        z-index: 30;
+        z-index: 60;
     }
 
     .navbar {
@@ -246,5 +246,13 @@
 
     .languages {
         font-size: 0.8rem;
+    }
+
+    .sidnav {
+        z-index: 50;
+    }
+
+    .sidnavLinks > .menuLinks {
+        color: white;
     }
 }

@@ -140,6 +140,13 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .modal {
+        max-width: 90vw;
+        width: 100%;
+        overflow: auto;
+        max-height: 90vh;
+    }
+
     .image > img {
         width: 80vw;
         height: 40vh;
@@ -154,7 +161,7 @@
     .title,
     .close {
         font-size: 2rem;
-        width: 50vw;
+        width: 20vw;
     }
 
     .subtitle {
@@ -183,6 +190,14 @@
     .imageDisplayed {
         height: auto !important;
         width: 80vw;
+    }
+
+    .images {
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 50vh;
+        overflow: auto;
+        justify-content: center;
     }
 }
 
