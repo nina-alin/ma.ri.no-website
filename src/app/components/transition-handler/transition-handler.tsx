@@ -67,7 +67,7 @@ export default function TransitionHandler({
         animation.revert();
       }
     };
-  }, [scroll, router, url, firstLoadReference]);
+  }, [router, url, firstLoadReference]);
 
   return (
     <div ref={elementReference}>
