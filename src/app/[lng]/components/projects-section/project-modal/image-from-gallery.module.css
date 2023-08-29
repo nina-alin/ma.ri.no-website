@@ -79,6 +79,7 @@
     overflow-y: hidden;
     white-space: nowrap;
     min-height: 50vh;
+    display: flex;
 }
 
 .images::-webkit-scrollbar {
@@ -92,8 +93,28 @@
     animation: skeleton-loading 1s linear infinite alternate;
 }
 
-.imageModal:not(:last-child) {
+.indexContainer {
+    position: relative;
+}
+
+.indexContainer:not(:last-child) {
     margin-right: 2vw;
+}
+
+.index {
+    background-color: black;
+    opacity: 50%;
+    color: white;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .description {
@@ -171,7 +192,7 @@
 
     .imageModal {
         width: auto;
-        height: 25vh;
+        height: 40vh;
     }
 
     .description {
@@ -198,6 +219,11 @@
         max-height: 50vh;
         overflow: auto;
         justify-content: center;
+        align-items: center;
+    }
+
+    .indexContainer:not(:last-child) {
+        margin-right: 0;
     }
 }
 
