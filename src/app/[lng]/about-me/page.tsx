@@ -62,56 +62,58 @@ const AboutMe = async () => {
             />
           </div>
         </div>
-        <Image
-          src={menThinking}
-          className={styles.menThinking}
-          width={5000}
-          height={5000}
-          alt={"men thinking"}
-          data-scroll
-          data-scroll-speed="1"
-        />
-        <div className={styles.bubbles}>
+        <div className={styles.menThinkingContainer}>
           <Image
-            className={styles.bubble4}
-            src={bubble4}
-            width={100}
-            height={100}
+            src={menThinking}
+            className={styles.menThinking}
+            width={5000}
+            height={5000}
+            alt={"men thinking"}
             data-scroll
             data-scroll-speed="1"
-            data-scroll-delay="0.15"
-            alt={"bubble 4"}
           />
-          <Image
-            className={styles.bubble3}
-            src={bubble3}
-            width={100}
-            height={100}
-            alt={"bubble 3"}
-            data-scroll
-            data-scroll-speed="1"
-            data-scroll-delay="0.055"
-          />
-          <Image
-            className={styles.bubble2}
-            src={bubble2}
-            width={100}
-            height={100}
-            alt={"bubble 2"}
-            data-scroll
-            data-scroll-speed="1"
-            data-scroll-delay="0.035"
-          />
-          <Image
-            className={styles.bubble1}
-            src={bubble1}
-            width={100}
-            height={100}
-            alt={"bubble 1"}
-            data-scroll
-            data-scroll-speed="1"
-            data-scroll-delay="0.095"
-          />
+          <div className={styles.bubbles}>
+            <Image
+              className={styles.bubble4}
+              src={bubble4}
+              width={100}
+              height={100}
+              data-scroll
+              data-scroll-speed="1"
+              data-scroll-delay="0.15"
+              alt={"bubble 4"}
+            />
+            <Image
+              className={styles.bubble3}
+              src={bubble3}
+              width={100}
+              height={100}
+              alt={"bubble 3"}
+              data-scroll
+              data-scroll-speed="1"
+              data-scroll-delay="0.055"
+            />
+            <Image
+              className={styles.bubble2}
+              src={bubble2}
+              width={100}
+              height={100}
+              alt={"bubble 2"}
+              data-scroll
+              data-scroll-speed="1"
+              data-scroll-delay="0.035"
+            />
+            <Image
+              className={styles.bubble1}
+              src={bubble1}
+              width={100}
+              height={100}
+              alt={"bubble 1"}
+              data-scroll
+              data-scroll-speed="1"
+              data-scroll-delay="0.095"
+            />
+          </div>
         </div>
         <div className={styles.text}>
           <div className={styles.text1}>

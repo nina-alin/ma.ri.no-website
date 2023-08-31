@@ -11,8 +11,10 @@ import { TransitionContext } from "@/app/components/transition-handler/transitio
 
 const MapProjects = ({
   projectsAlreadyFetched,
+  openMenu,
 }: {
   projectsAlreadyFetched?: Types[];
+  openMenu?: () => void;
 }) => {
   const pathname = usePathname();
   const router = useRouter();
@@ -27,6 +29,7 @@ const MapProjects = ({
     if (pathname === `/${lng}` && scroll) {
       router.push(`${pathname}?projects=${projectId}`);
       scroll.scrollTo(document.querySelector("#projects") as HTMLElement);
+      openMenu && openMenu();
     } else {
       setUrl(`/${lng}?projects=${projectId}`);
     }

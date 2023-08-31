@@ -57,7 +57,7 @@ const NavbarClient = ({
               {t(`navbar.links.projects`)}
             </Link>
             <hr className={styles.hr} />
-            <MapProjects />
+            <MapProjects openMenu={openMenu} />
           </div>
         </div>
         <nav className={styles.navbar}>
