@@ -3,6 +3,7 @@
 import React, { useContext } from "react";
 
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
+import { MouseContext } from "@/app/components/mouse/mouse-context";
 import { TransitionContext } from "@/app/components/transition-handler/transition-provider";
 import { useTranslation } from "@/app/i18n/client";
 
@@ -21,8 +22,21 @@ const links = [
   },
 ];
 
-const MapLinks = ({ lng, onClose }: { lng: string; onClose?: () => void }) => {
+interface MapLinksProperties {
+  lng: string;
+  onClose?: () => void;
+  handleMouseEnter?: () => void;
+  handleMouseLeave?: () => void;
+}
+
+const MapLinks = ({
+  lng,
+  onClose,
+  handleMouseEnter,
+  handleMouseLeave,
+}: MapLinksProperties) => {
   const { t } = useTranslation(lng);
+
   const { setUrl } = useContext(TransitionContext);
 
   const handleClick = (linkHref: string) => {
@@ -37,7 +51,12 @@ const MapLinks = ({ lng, onClose }: { lng: string; onClose?: () => void }) => {
     <>
       {links.map((link) => (
         <button
-          onClick={() => handleClick(link.href)}
+          onClick={(event) => {
+            handleClick(link.href);
+            handleMouseLeave && handleMouseLeave(event);
+          }}
+          onMouseEnter={handleMouseEnter && handleMouseEnter}
+          onMouseLeave={handleMouseLeave && handleMouseLeave}
           data-side-text
           className={styles.menuLinks}
           key={link.translation}

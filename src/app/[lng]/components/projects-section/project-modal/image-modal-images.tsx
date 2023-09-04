@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { useRef } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import styles from "@/app/[lng]/components/projects-section/project-modal/image-from-gallery.module.css";
 import { PostWithType } from "@/types/posts";
@@ -38,14 +39,11 @@ const ImageModalImages = ({
       onWheel={onWheel}
     >
       <div className={styles.indexContainer}>
-        <Image
+        <LazyLoadImage
           key={currentIndex}
           className={styles.imageModal}
           src={posts[currentIndex].mainImageUrl}
           alt={"main image from gallery"}
-          width={100}
-          height={100}
-          unoptimized={true}
           data-horizontal-image
         />
         <div className={styles.index}>
@@ -54,14 +52,11 @@ const ImageModalImages = ({
       </div>
       {posts[currentIndex].imagesUrl.map((image: string, index: number) => (
         <div key={image} className={styles.indexContainer}>
-          <Image
+          <LazyLoadImage
             className={styles.imageModal}
             src={image}
             alt={"image from gallery"}
-            width={100}
             data-horizontal-image
-            height={100}
-            unoptimized={true}
           />
           <div className={styles.index}>
             {index + 2}/{posts[currentIndex].imagesUrl.length + 1}

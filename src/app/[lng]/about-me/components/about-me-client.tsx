@@ -1,11 +1,13 @@
 "use client";
 
 import { gsap } from "gsap";
-import React, { useLayoutEffect } from "react";
+import React from "react";
+
+import useGsapAnimation from "@/app/hooks/use-gsap-animation";
 
 const AboutMeClient = ({ children }: { children: React.ReactNode }) => {
-  useLayoutEffect(() => {
-    const animation = gsap.context(() => {
+  useGsapAnimation({
+    animationFunction: () => {
       gsap
         .timeline()
         .to("#color1", {
@@ -26,10 +28,9 @@ const AboutMeClient = ({ children }: { children: React.ReactNode }) => {
           },
           "-=1",
         );
-    });
-
-    return () => animation.revert();
-  }, []);
+    },
+    deps: [],
+  });
 
   return <>{children}</>;
 };

@@ -9,6 +9,7 @@ import MapProjects from "@/app/[lng]/components/layout/map-projects";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import { SmoothScrollContext } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
+import { MouseContext } from "@/app/components/mouse/mouse-context";
 import { TransitionContext } from "@/app/components/transition-handler/transition-provider";
 import { useTranslation } from "@/app/i18n/client";
 
@@ -18,6 +19,7 @@ const NavbarProjects = () => {
   const lng = useContext(LngContext);
   const { setUrl } = useContext(TransitionContext);
   const { scroll } = useContext(SmoothScrollContext);
+  const { handleMouseEnter, handleMouseLeave } = useContext(MouseContext);
 
   const { t } = useTranslation(lng);
 
@@ -76,9 +78,14 @@ const NavbarProjects = () => {
       <button
         className={styles.projects}
         key={"projects"}
-        onClick={handleClick}
+        onClick={(event) => {
+          handleClick();
+          handleMouseLeave(event);
+        }}
         data-scroll-to
         id={"projectsNavbar"}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {t(`navbar.links.projects`)}
       </button>

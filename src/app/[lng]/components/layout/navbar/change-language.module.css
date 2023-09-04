@@ -25,3 +25,7 @@
     transform-origin: left;
     transform: scaleX(1);
 }
+
+.links:hover {
+    cursor: pointer;
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { PostWithoutOrderAndWithoutId } from "@/types/posts";
 
@@ -46,7 +47,7 @@ const ImageUpload = ({ setForm, form }: Properties) => {
         <h2>Images</h2>
         <div className={styles.imageContainer}>
           {form.mainImageUrl && (
-            <img
+            <LazyLoadImage
               className={styles.imageSize}
               src={form.mainImageUrl}
               alt={"secondary image"}
@@ -70,7 +71,7 @@ const ImageUpload = ({ setForm, form }: Properties) => {
           {[...Array.from({ length: fileNumber }).keys()].map((index) => (
             <div key={index} className={styles.imageContainer}>
               {form.imagesUrl[index] && (
-                <img
+                <LazyLoadImage
                   src={form.imagesUrl[index]}
                   alt={"secondary image"}
                   className={styles.imageSize}

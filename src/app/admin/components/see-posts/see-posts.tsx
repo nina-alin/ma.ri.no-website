@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import SeePostsActions from "@/app/admin/components/see-posts/see-posts-actions";
 import SeePostsHeading from "@/app/admin/components/see-posts/see-posts-heading";
@@ -63,9 +63,7 @@ const SeePosts = ({ posts }: SeePostsProperties) => {
                 : post.contentJp)}
             </td>
             <td>
-              <Image
-                width={100}
-                height={100}
+              <LazyLoadImage
                 className={styles.imageSize}
                 src={post.mainImageUrl}
                 alt={`${post.titleEn} image`}
@@ -81,7 +79,7 @@ const SeePosts = ({ posts }: SeePostsProperties) => {
             <td>{post.year}</td>
             <td>
               {post.imagesUrl.map((image: string) => (
-                <Image
+                <LazyLoadImage
                   width={100}
                   height={100}
                   className={styles.imageSize}

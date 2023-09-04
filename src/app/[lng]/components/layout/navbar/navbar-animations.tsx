@@ -4,6 +4,7 @@ import { gsap, Power1, Power2 } from "gsap";
 import React, { ReactNode, useEffect, useLayoutEffect, useRef } from "react";
 
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
+import useGsapAnimation from "@/app/hooks/use-gsap-animation";
 
 const NavbarAnimations = ({
   openMenu,
@@ -20,8 +21,8 @@ const NavbarAnimations = ({
   const tl = useRef<gsap.core.Timeline>();
 
   // navbar fade in
-  useLayoutEffect(() => {
-    const animation = gsap.context(() => {
+  useGsapAnimation({
+    animationFunction: () => {
       gsap.from("nav", {
         y: -100,
         opacity: 0,
@@ -36,14 +37,14 @@ const NavbarAnimations = ({
         ease: "power2.out",
         stagger: 0.2,
       });
-    }, navReference);
-
-    return () => animation.revert();
-  }, []);
+    },
+    reference: navReference,
+    deps: [],
+  });
 
   // sidenav animation
-  useLayoutEffect(() => {
-    const animation = gsap.context(() => {
+  useGsapAnimation({
+    animationFunction: () => {
       if (isPlayAnimation) {
         const burgerTop = document.querySelector("#burger-top");
         const burgerBottom = document.querySelector("#burger-bottom");
@@ -94,10 +95,10 @@ const NavbarAnimations = ({
             "-=1",
           );
       }
-    }, navReference);
-
-    return () => animation.revert();
-  }, [isPlayAnimation, reversed]);
+    },
+    reference: navReference,
+    deps: [isPlayAnimation, reversed],
+  });
 
   useEffect(() => {
     tl.current?.reversed(reversed);

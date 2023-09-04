@@ -28,6 +28,7 @@ const NavbarClient = ({
   const lng = pathname.split("/")[1];
 
   const { t } = useTranslation(lng);
+
   const { scroll } = useContext(SmoothScrollContext);
 
   const [isPlayAnimation, setIsPlayAnimation] = useState(false);

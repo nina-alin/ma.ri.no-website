@@ -5,6 +5,7 @@ import React, { useContext } from "react";
 
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import styles from "@/app/[lng]/components/projects-section/project-modal/image-from-gallery.module.css";
+import { MouseContext } from "@/app/components/mouse/mouse-context";
 import { PostWithType } from "@/types/posts";
 
 interface ImageModalHeaderProperties {
@@ -21,6 +22,7 @@ const ImageModalHeader = ({
   onClose,
 }: ImageModalHeaderProperties) => {
   const lng = useContext(LngContext);
+  const { handleMouseEnter, handleMouseLeave } = useContext(MouseContext);
 
   const displayTags = (type: Types[]) => {
     return type
@@ -46,8 +48,13 @@ const ImageModalHeader = ({
       </div>
       <button
         className={styles.close}
-        onClick={onClose}
+        onClick={(event) => {
+          onClose();
+          handleMouseLeave(event);
+        }}
         style={{ color: textColor }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         X
       </button>

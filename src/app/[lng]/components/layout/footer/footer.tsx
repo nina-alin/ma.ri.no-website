@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
+import InstagramLink from "@/app/[lng]/components/layout/footer/instagram-link";
 import MapLinks from "@/app/[lng]/components/layout/map-links";
 import MapProjects from "@/app/[lng]/components/layout/map-projects";
 import Logo from "@/app/[lng]/components/svg/logo";
@@ -73,11 +74,7 @@ const Footer = async ({ lng }: { lng: string }) => {
             </Link>
           </p>
         </div>
-        <Link href={"https://www.instagram.com/ma.ri.no_studio/"}>
-          <div className={styles.socials}>
-            <Instagram />
-          </div>
-        </Link>
+        <InstagramLink />
       </div>
     </footer>
   );

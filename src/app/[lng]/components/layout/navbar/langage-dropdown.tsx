@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import ChangeLanguage from "@/app/[lng]/components/layout/navbar/change-language";
 import styles from "@/app/[lng]/components/layout/navbar/navbar.module.css";
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
+import { MouseContext } from "@/app/components/mouse/mouse-context";
 
 const languages = [
   {
@@ -23,6 +24,8 @@ const languages = [
 const LangageDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const reference = useRef(null);
+
+  const { handleMouseEnter, handleMouseLeave } = useContext(MouseContext);
   const lng = useContext(LngContext);
 
   useEffect(() => {
@@ -43,7 +46,11 @@ const LangageDropdown = () => {
       <button
         style={isOpen ? { color: "#ddadb4" } : {}}
         className={styles.language}
-        onMouseEnter={() => setIsOpen(true)}
+        onMouseEnter={(event) => {
+          setIsOpen(true);
+          handleMouseEnter(event);
+        }}
+        onMouseLeave={handleMouseLeave}
       >
         {lng.toUpperCase()}
       </button>

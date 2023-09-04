@@ -60,6 +60,7 @@
 .links span:hover {
     font-weight: bold;
     color: black !important;
+    cursor: pointer;
 }
 
 .description {

@@ -1,7 +1,8 @@
 "use client";
 
-import gsap from "gsap";
-import React, { HTMLAttributes, ReactNode, useEffect, useState } from "react";
+import React, { HTMLAttributes, ReactNode, useState } from "react";
+
+import useHoverButtonMouse from "@/app/components/gsap/hover-button-mouse";
 
 type AnimatedButtonProperties = {
   text: string;
@@ -23,32 +24,20 @@ const AnimatedButton = ({
   direction,
   dataScroll,
 }: AnimatedButtonProperties) => {
-  const [isHover, setIsHover] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-  useEffect(() => {
-    if (isHover) {
-      gsap.to(`#${id}`, {
-        x: direction === "right" ? 10 : -10,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-    } else {
-      gsap.to(`#${id}`, {
-        x: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-    }
-  }, [direction, id, isHover]);
+  useHoverButtonMouse(`#${id}`, isHovered);
 
   return (
     <button
       style={style}
       id={id}
-      onClick={onClick}
+      onClick={() => {
+        onClick && onClick();
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={className}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
       data-scroll={dataScroll}
       data-scroll-speed={dataScroll ? "3" : undefined}
     >

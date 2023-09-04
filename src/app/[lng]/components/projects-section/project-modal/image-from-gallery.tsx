@@ -1,12 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import ImageModal from "@/app/[lng]/components/projects-section/project-modal/image-modal";
 import { SmoothScrollContext } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
 import Modal from "@/app/components/modal/modal";
+import { MouseContext } from "@/app/components/mouse/mouse-context";
 import { PostWithType } from "@/types/posts";
 
 import styles from "./image-from-gallery.module.css";
@@ -40,6 +41,8 @@ const ImageFromGallery = ({
 }: ImageFromGalleryProperties) => {
   const lng = useContext(LngContext);
   const { scroll } = useContext(SmoothScrollContext);
+  const { setImageURL, handleMouseImage, handleMouseLeave } =
+    useContext(MouseContext);
 
   const [open, setOpen] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,13 +75,10 @@ const ImageFromGallery = ({
       data-scroll
       data-scroll-speed={applyDataScroll(index)}
     >
-      <Image
+      <LazyLoadImage
         className={styles.imageDisplayed}
         src={post.mainImageUrl}
         alt={post.titleEn}
-        width={100}
-        height={100}
-        unoptimized={true}
       />
       <h3
         data-scroll
@@ -86,11 +86,21 @@ const ImageFromGallery = ({
         className={styles.text} // hover color is set in css
         // @ts-ignore
         style={{ "--hover-color": post.displayColor }}
-        onClick={() => {
+        onClick={(event) => {
           setOpen(true);
           if (scroll) {
             scroll.stop();
           }
+          handleMouseLeave(event);
+          setImageURL(null);
+        }}
+        onMouseEnter={(event) => {
+          setImageURL(post.imagesUrl[0]);
+          handleMouseImage(event);
+        }}
+        onMouseLeave={(event) => {
+          handleMouseLeave(event);
+          setImageURL(null);
         }}
       >
         {lng === "en"

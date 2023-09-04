@@ -119,6 +119,7 @@
 .more:hover {
     border: 2px solid #8dc6b5;
     color: #8dc6b5;
+    cursor: pointer;
 }
 
 .more:hover > svg {
@@ -176,6 +177,7 @@
 .discover:hover {
     border: 2px solid #e0dd6a;
     color: #e0dd6a;
+    cursor: pointer;
 }
 
 .discover:hover > svg {
@@ -214,6 +216,10 @@
     position: relative;
     display: inline-block;
     width: fit-content;
+}
+
+.underlineAnimation:hover {
+    cursor: pointer;
 }
 
 .underlineAnimation::after {

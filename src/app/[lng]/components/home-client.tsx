@@ -1,10 +1,11 @@
 "use client";
 
 import { gsap } from "gsap";
-import React, { useContext, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 
 import { LngContext } from "@/app/[lng]/components/layout/navbar/navbar-client";
 import { SmoothScrollContext } from "@/app/components/locomotive-scroll/locomotive-scroll-app-provider";
+import useGsapAnimation from "@/app/hooks/use-gsap-animation";
 
 const HomeClient = ({
   children,
@@ -18,8 +19,8 @@ const HomeClient = ({
   const { scroll } = useContext(SmoothScrollContext);
   const homeReference = useRef(null);
 
-  useLayoutEffect(() => {
-    const animation = gsap.context(() => {
+  useGsapAnimation({
+    animationFunction: () => {
       gsap.from("#background-logo", {
         y: 100,
         opacity: 0,
@@ -34,10 +35,10 @@ const HomeClient = ({
         ease: "power2.out",
         stagger: 0.2,
       });
-    }, homeReference);
-
-    return () => animation.revert();
-  }, []);
+    },
+    reference: homeReference,
+    deps: [],
+  });
 
   useEffect(() => {
     if (scroll && projects !== undefined) {

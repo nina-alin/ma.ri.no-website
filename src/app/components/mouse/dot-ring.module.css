@@ -1,19 +1,76 @@
-.dot {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: #0e4b00;
-    mix-blend-mode: difference;
-    border-radius: 100%;
-    transform: translate(-50%, -50%);
-    z-index: 99999;
+.magicCursor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
     pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    -webkit-transition: opacity 0.2s ease-in-out 0.5s;
+    transition: opacity 0.2s ease-in-out 0.5s;
 }
 
-@media (hover: none) {
-    .dot {
-        display: none;
+.ball {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    box-sizing: border-box;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ball::before {
+    content: "\f077";
+    font-size: 12px;
+    width: 8px;
+    height: 16px;
+    line-height: 26px;
+    position: absolute;
+    color: #999;
+    opacity: 0;
+    transform: translateY(-40px);
+    -webkit-transform: translateY(-40px);
+    transition: all 0.15s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.ball::after {
+    content: "\f078";
+    font-size: 12px;
+    width: 8px;
+    height: 16px;
+    line-height: 16px;
+    position: absolute;
+    color: #999;
+    opacity: 0;
+    transform: translateY(40px);
+    -webkit-transform: translateY(40px);
+    transition: all 0.15s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.magicCursor:has(.image) {
+    mix-blend-mode: unset;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(207, 14%, 84%);
     }
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
+
+.image {
+    width: 200px;
+    height: auto;
+    animation: skeleton-loading 1s linear infinite alternate;
 }
